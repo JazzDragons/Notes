@@ -1,0 +1,156 @@
+PHP基础
+
+第二节笔记整理
+
+文本标签：
+	1.<strong></strong>加粗强调
+	2.<em></em>斜体强调
+	3.<hn></hn>标题样式
+	4.<del></del>删除线
+	5.<i></i>斜体
+	6.<b></b>粗体
+	7.<u></u>下划线
+
+格式化标签：
+	1.<br/>换行
+	2.<p></p>段落
+	3.<center></center>居中
+
+列表标签：
+	1.<ul></ul>无序列表
+	2.<ol></ol>有序列表
+		<li></li>列表项
+
+	a.<dl></dl>自定义列表
+		<dt></dt>自定义列表表头
+		<dd></dd>自定义列表内容
+
+超链接标签：
+	<a href=""></a>链接地址
+		target= _blank 新窗口
+			_parent 父窗口
+			_self 本窗口
+			_top 顶级窗口
+			framename 窗口名
+		title文字提示属性
+
+	<a href="#n"> 锚点链接跳跃到n处
+	<a id="n"></a>定义锚点n
+
+图片标签：
+	<img/> 在网页中插入图片
+		src:图片名及url地址
+		alt:图片加载失败提示
+		title:图片描述
+		width:图片宽度
+		height:图片高度
+		border:图片边框
+
+常用实体符号：
+	&nbsp；空格，&lt;小于号，&gt;大于号，&amp;和号（&），&quot;引号
+
+
+几种实际常用元素：
+	<!Doctype html> html5起始标语
+	<meta charset="utf-8"/> 编码格式
+	<base href="">网页地址描述
+	<abbr title=""></abbr>鼠标悬停标注
+
+
+自制网页问题：系统环境 win7 64bit ，浏览器环境 IE10 遨游 火狐 google
+
+IE10 点击锚点链接会复制本标签页(注解地址描述后复制标签页解决？？？)无序列表的点位置不对
+
+遨游 网页的链接失效，搜索不到，用IE打开后再用遨游就好了！点击锚点链接会复制本标签页(注解地址描述后复制标签页解决？？？)无序列表的点位置不对
+
+火狐 锚点链接失效
+
+谷歌 点击锚点链接会复制本标签页(注解地址描述后复制标签页解决？？？),无序列表的点位置不对
+
+图片标签
+	<img/>图片插入
+		src：图片名及url地址
+		alt:图片加载失败显示
+		title：鼠标悬停文字提示
+		width：图片宽度
+		height：图片高度
+		border：边框粗细
+		usemap:图片映射
+		area shape:选取图片上一个区域形状
+			coords：选取坐标
+
+多媒体标签
+	<audio>音频插入
+		src：音频插入地址
+		controls：播放控制
+	<video>视频插入
+		source src：视频插入地址 type:视频类型（多媒体形式/格式）
+		controls loop poster：视频开头图片
+	<embed>flash插入
+		src：flash插入地址
+
+表格标签
+	<table> (windth宽，height高，border边框，cellspacing边框间距，cellpadding表格内间距)
+		<thead>表头
+		<tbody>表体
+		<tfoot>表尾
+			<th>列头
+			<td>内容
+			<tr>表格行
+			<caption>表格标题
+				<rowspan>跨行
+				<colspan>跨列
+				<col align>内容横向位置移动
+				<col valign>内容竖向位置移动
+表单标签
+	<form>表单开始结尾
+		action表单内信息提交地址
+		mehod表单内信息发送方式（get“url显示”/post“url不显示”）
+	<input>信息填写
+		type=x
+			x(text文字，password密码，submit提交按钮，reset重置按钮，button自定义按钮，image图片，hidden隐藏域，checkbox多选（checked value默认属性），radio单选（checked默认属性），file图片)
+		name名字	
+		value数值	
+		size信息输入位置大小
+		disabled禁用
+		readonly只读
+		maxlength信息输入最大值
+	<select>下拉菜单
+		<option value>下拉内容(selected默认属性)
+	<textarea>多行输入文本
+		cols行数
+		row列数
+		name名字
+		
+	from标签补充
+	<fieldset>：内容区域分割
+		<legend>：内容区域分割标题
+	
+	<optgroup label(定义选项组) disabled(禁用选项组)>：为选项分组
+
+input标签补充
+	<datalist>：<input>下的标签给输入联想选项
+		例子：<datalist id="keyword">
+					<option value="...">
+			  </datalist>
+input属性补充
+	date:日期 search:搜索 email:邮箱 number:年龄 url:网址 week:周数 time:时间
+
+ frameset标签
+	替代body标签，整合多个网页到一个网页
+	<frameset border（边框大小）=1 rows（横向排列）="区域占的百分比a，区域占得百分比2（*表示剩余数值）">
+	<frameset frameborder=1/0（是否有边框） cols（竖向排列）="区域占的百分比a，区域站的百分比2（*表示剩余数值）">
+		<frame>作为frameset内的标签，加属性提取整合的网页
+	<iframe>Html5的新标签，用于在网页中关联一个其他网页的窗口
+
+其他补充标签
+	<progress>进度条标签
+		<progress id="" value=""(当前值) max=""(最大值)></progress>
+	<meter>也是进度条（但多用于类似投票统计等等）
+		<meter value=""(当前值) max=""（最大值）></meter>
+	<objcet>标签用户替换内容
+		<param>此标签为<objcet>提供属性
+	
+布局常用相关标签
+	<div>网页中定义内容所在区域
+	<span>网页中定义包含中的内容

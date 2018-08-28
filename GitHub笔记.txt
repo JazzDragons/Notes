@@ -1,0 +1,15 @@
+创建git新目录
+git init
+git add .
+git commit -a -m "first commit"
+git remote add origin git@github.com:efeencheung/marathon_v2.git   (创建新git目录名称和位置)
+git push -u origin master
+
+拉版本
+git pull
+
+查看版本变动
+git status 
+
+替换版本文件
+git checkout 文件名

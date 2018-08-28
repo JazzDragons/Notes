@@ -1,0 +1,92 @@
+Symfony.com ->Documentation 					手册
+			->packagist.org or knpbundles.com	第三方软件
+			->TWIG								模版引擎
+			->www.doctrine-project.org			数据库操作手册
+			
+Linux安装PHP/nginx/mysql环境
+   1   sudo apt-get update 
+   2   sudo apt-get upgrade
+   3   sudo apt-get install php5-cli php5
+   4   php -v
+   5   sudo apt-get install php5 php5-cgi php5-cli php5-common php5-curl php5-dev php5-fpm php5-gd php5-imagick php5-imap php5-intl php5-mcrypt php5-memcache php5-memcached php5-mysql  php5-sqlite php5-xdebug php5-xmlrpc 
+   6   sudo apt-get install nginx
+   7   sudo apt-get install mysql-client
+   8   sudo apt-get install mysql-server
+   9   sudo apt-get install nodejs
+   10  sudo apt-get install npm
+   11  npm -v
+   12  sudo find /usr/ -name npm
+   13  sudo npm install -g uglify-js
+   14  sudo npm install -g uglifycss
+   15  cd /etc/nginx/sites-enabled
+   16  sudo apt-get install vim
+   
+   
+Symfony nginx配置
+	php symfony.phar new 项目名称	//新建工程目录
+	
+	1	cd /etc/nginx/sites-available
+	2	sudo vim 文件名称  or sudo cp 旧文件名 新文件名（也可以把旧文件复制，修改）
+      
+		server {
+			listen 80;
+			
+			server_name kfxxjh.com;		//路由地址
+
+			root /home/skk/www/kfxxjh; 	//工程路径
+			
+			fastcgi_connect_timeout 300;
+			fastcgi_send_timeout 300;
+			fastcgi_read_timeout 300;
+			
+			error_log /var/log/nginx/kfxxjh.error.log;	//错误日志
+			access_log /var/log/nginx/kfxxjh.access.log;//错误日志
+			
+			rewrite ^/app_dev\.php/?(.*)$ /$1 permanent;
+
+			location / {
+				index app_dev.php;
+				try_files $uri $rewriteapp;
+			}
+
+			location @rewriteapp {
+				rewrite ^(.*)$ /app_dev.php/$1 last;
+			}
+
+			location ~^/(.+)\.php(/|$) {
+					fastcgi_pass unix:/var/run/php5-fpm.sock;
+					fastcgi_index index.php;
+					include fastcgi_params;
+			}
+
+        }
+
+	3	sudo ../sites-enabled/
+	4	sudo ln -s ../sites-available/文件名	//做一个软连接
+	5	sudo vim /etc/hosts
+	
+		127.0.0.1	kfxxjh.com //添加一个地址
+		
+		
+    6 	sudo service nginx restart
+    7  	ping kfxxjh.com
+  
+Symfony 建立工程文件
+209  php app/console list		//查看都有那些命令
+212  php app/console generate:bundle	//新建一个bundle(工程目录)
+  
+213  php app/console doctrine:mapping:import --force IndexBundle yml  //通过数据库建立一套数据库的中转文件
+214  php app/console doctrine:mapping:convert annotation ./src 	//建立Entity文件不包含方法
+  
+/-- 缺少原件，需要安装 --/
+218  sudo apt-get install curl
+219  curl -sS https://getcomposer.org/installer | php
+230  php composer.phar install
+231  chmod 777 -R app/cache/
+232* /
+233  php composer.phar install
+  
+234  php app/console doctrine:generate:entities IndexBundle		//建立Entity文件包含方法
+  
+   
+  

@@ -1,0 +1,149 @@
+CSS基础
+
+CSS语法格式
+	选择器｛属性：值；属性：值；...｝
+	
+CSS镶嵌方式
+	内联方式
+		是在html标签中直接添加属性style=“属性：值；...”来实现。同时也是最优先的方式
+	
+	内部方式
+		是在head标签内键入<style type="text/css">...</style>来实现的。可整体修改整个代码中的一个统一标签
+		
+	外部导入式
+		在外部单独建立一个.css的文件，并在head中键入<link href="文件名.css" type="text/css" rel="stylesheet"/>来实现。用于整个网站，和用样本实现快速建立
+		
+	选择符：（都是在head里键入<style type="text/css"></style>中的）
+	Css2
+		1.通配选择符
+			直接在head里键入 *｛｝对所有的文件进行样式
+		2.标签选择符（html p h2等等）
+			直接在head里键入要修改的 标签｛｝直接对选择符指定标签做样式
+		3.class类选择符（为选定标签加入样式）
+			先在标签中键入class="n n n..."
+			在head里键入 .n{}可以对所有键入class="n"的标签做样式
+			在head里键入 标签.n{}可以对键入class="n"的选定标签做样式修改
+		4.Id选择符
+			先在标签中键入 id="n"
+			在head里键入 #n{}可以键入id="n"的标签做样式（id="n"这里的n是唯一的，不能重复，一般定义重要的唯一标签;如：body等）
+		5.关联选择符（也叫包含选择符）
+			在head里键入 n x{} 可以对n标签下的所有x子标签做样式
+		6.组合选择符
+			在head里键入 n,x{} 可以对n标签和n标签下的所有x子标签做样式
+		7.伪类选择符
+			在head里键入 a：link{}（未被访问的超链接样式） a:visited{}(已被访问的超链接样式) a:hover{}（鼠标悬停的超链接样式） a:active{}（鼠标点击超链接是的样式）
+	Css3
+		8.关系选择符
+			在head里键入 n>x{}可以对n标签下的第一层x子标签做样式
+			在head里键入 n+x{}可以对n标签同级标签的下一个x标签做样式
+			在head里键入 n~x{}可以对所有n标签和同级的x标签做样式
+		9.属性选择符
+			在head里键入 n[x]{}可以对n标签里的x属性做样式
+			在head里键入 n[x="y"]{}可以对n标签里属性值为y的x标签做样式
+			在head里键入 n[x~="y"]{}可以对n标签里所有属性值为y的x标签做样式？？？
+			在head里键入 n[x*="y"]{}可以n标签里包含y字母的x属性做样式
+			在head里键入 n[x^="y"]{}可以对n标签里属性值为y开头的x属性做样式
+			在head里键入 n[x$="y"]{}可以对n标签里属性值为y结尾的x属性做样式
+		10.结构性伪类选择符
+			在head里键入 n:first-leter{}可以对n标签里的第一个字做样式
+			在head里键入 n:first-line{}可以对n标签里的第一行做样式
+			在head里键入 n x:first-of-type{}可以对n标签下的第一个x标签做样式
+			
+	Css选择符
+	n:hover{}鼠标悬停样式
+	n:active{}鼠标点击中样式
+	n:focus{}鼠标点击后样式
+	n:not(.x){}在所有n标签中除了x项都带如样式
+	
+
+
+Css属性
+	整体属性
+		width 宽，height 高，mrgin 外边框，float 浮动方向（控制元素从什么地方开始排列）
+	
+	字体属性
+		font-style:italit 样式:斜体
+			-weight:bold 字体加粗/bolder 字体特粗/lighter 细体
+			-size：...px 字体大小
+			-family:x,y,z 字体设置优先x，不支持x顺位y...
+		font:...px/...px x,y,z 字体属性的简写方式，顺序为font：font-style(是否斜体)/font-weight（字体粗细）/font-size（字体大小）/font-family(字体字体)
+		
+	文本属性
+		text-indent:...px 文本的首行缩进
+		line-height:...px 文本行高
+		letter-spacing:...px 字间距
+		text-decoration:underline 下划线/lin-through 贯穿线，也叫删除线
+		text-align:left/center/right 文字位置 左/中/右
+		text-shadow:...px ...px ...px ...px 文本阴影 平移大小 竖移大小 模糊大小 颜色（rgba）
+		white-space:nowrap 文字不换行
+		overflow:hidden 超出边框隐藏
+		text-overflow:ellipsis 超出边框隐藏部分显示为...
+		
+	列表属性
+		list-style-type:disc实心圆/circle空心圆/ square实心方块/none没有
+				  -image:url(...)给列表项标记图像
+				  -position:定义列表想标记排列方式
+
+	
+	边框属性
+		border-width；...px 边框厚度
+			  -style；solid/hidden/dotted/dashed/double/groove/ridge/inset/outset 边框样式：实线/隐藏/点状/虚线/双线/3D凹槽/3D凸槽/3D凹边/3D凸边 
+			  -color:rgba 边框颜色
+		border:...px solid #dddddd 边框属性简写
+		border-top: 对上边框控制 
+			  -right: 对右边框控制
+			  -bottom:对下边框控制
+			  -left:对左边框控制
+		border-radius:...xp 对边框倒圆角（也可输入4个数值 对应顺序 左上 右上 右下 左下）
+		border-top-left-radius:...xp 对左上倒圆角
+		border-top-right-radius:...xp 对右上倒圆角
+		border-bottom-right-radius:...xp 对右下倒圆角
+		border-bottom-left-radius:...xp 对左下倒圆角
+		box-shadow:x y z n rgba 边框阴影 横移数值 竖移数值 模糊数值 外延数值 颜色透明度
+		
+	背景属性
+		background-color:grba 背景颜色
+				  -image:url(...) 背景图片
+				  -position:left/center/right/top/bottom 定义背景图片的位置
+				  -repeat:no-repeat/repeat-x/repeat-y/round/space 背景铺设方式：不平铺/沿x轴平铺/沿y轴平铺/充满区域/以相同间距平铺并充满
+				  -position:x y 图片按坐标移动
+	              -size：...px 背景大小
+			      -image:url(...),url(...) 多重背景
+			      -clip:content-box 从中心区域向外剪裁（默认为盖在边框上）
+			  
+	内补白（内边缝）
+		padding:...px(...px ...px ...px ...px<上右下坐顺序>) 向内留空白 
+			   -top:...px
+			   -right:...px
+			   -bottom:...px
+			   -left:...px
+			   
+	外补白（外边缝）
+		margin:...px(...px auto<上下留白，左右居中>/...px ...px ...px<上 左右 下留白>/...px ...px ...px ...px<上右下坐顺序>) 向外留空白
+			  -top:...px
+			  -right:...px
+			  -bottom:...px
+			  -left:...px
+			  
+	定位属性
+		position-absolute 对象脱离文档流（脱离网页布局）｛绝对定位｝
+				-z-index:1/2/3/... （对象脱离文档流后层叠顺序）｛绝对定位｝
+				-fixed （对象脱离文档流并固定不随滚动）｛绝对定位｝
+				-relative 在父标签里加入，使此标签下的绝对定位对此标签相对定位
+				
+	布局属性
+		display:none/block 不显示/块状显示
+		overflow:risible/hidden/scroll 超出隐藏无效/超出隐藏/超出隐藏并可滚动查看
+		float:left/right 左漂浮/右漂浮
+		clear:left/right/both 清除漂浮：左/右/两侧
+		clip:rect(0 auto 20px 30px) 剪裁
+		risibility:hidden 隐藏（隐藏部分占地方）
+	用户界面
+		cursor:pointer 鼠标样式（手型点击）
+		resize:botn 用户可调节元素宽高
+	多栏
+		columns:...xp n;分栏每栏...宽度，固定分n栏
+				...xp;分栏每栏...宽度，按窗口大小决定分栏数量
+	
+	**当设置对象高度和行高数值相同时，则呈现上下居中...
+	

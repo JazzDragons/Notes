@@ -1,0 +1,2110 @@
+第一张  认识 jQuery
+ 1.1 window.onload和$(document).ready(function(){})的区别：
+	window.onload	$(document).ready(function(){})
+执行时机	等待网页中所有的内容加载完毕（包括图形）才执行。	网页中所有Dom结构绘制完毕之后就执行，可能dom元素关联的东西没有加载完。
+编写个数[]	window.onload = function(){
+   alert(“test1”);
+};
+
+window.onload = function(){
+   alert(“test2”);
+}
+
+输出结果为：test2	//标准入口
+$(document).ready(function(){
+  alert(“test1”);
+});
+
+//简写入口
+$(function(){
+  alert(“test2”);
+});
+
+输出结果为：test1,test2
+1.2  jQuery对象和dom对象
+a).dom：document object model 文档对象模型：获取方法：	
+		getElementById(),
+		getElementsByName()
+	 	getElementsByTagName()。
+
+b).通过jQuery包装Dom对象后产生的对象。
+c). jQuery对象和dom对象之间的转换:
+	jQuery对象转化为dom对象：
+	var $cr = $(“#cr”); // 等同于getElementById(“cr”)；
+	var cr = $ cr[0];// var cr = $ cr.get(0);
+	
+	dom对象转化为jQuery对象：
+	var cr = documentById(“cr”);
+	var $cr = $(cr);
+插件下载地址;
+Eclipse：
+http://sourceforge.net/projects/jquerywtp/files/jquerywtp/jqueryWTP0.2forJQuery1.2.6.jar/
+
+Visual Studio 2008：
+http://code.msdn.microsoft.com/KB958502/Release/ProjectReleaseses.aspx?ReleaseId=1736
+注：平时我们所用到的jQuery对象都是通过$()函数制造出来的，$()函数就是一个jQuery的对象制造工厂。
+
+JQuery选择器
+2.1  基本选择器
+
+选择器	描述	返回	示例
+#id	根据指定的Id匹配一个元素	单个元素	$(“#test”)选取id为test的元素
+.class	根据指定的类名匹配元素	集合元素	$(“.#test”)选取所有class为test的元素
+element	根据指定的元素名称匹配元素	集合元素	$(“P”)选取去所有的元素
+*	匹配所有元素	集合元素	$(“*”)选取所有的元素
+Selector1,Selector2…	将每一个选择器匹配到的元素合并到一起返回。	集合元素	$(“div,span, .myClass”)选取所有<div>,<span>和拥有class为myClass的一组元素
+
+
+2.2 层次选择器
+选择器	描述	返回值	示例
+$(“ancestor descentant”)	选择ancestor元素里面的所有descentant元素	集合元素	$(“div span”)选取<div>里的所有的<span>元素
+$(“parent>child”)	选择parent元素下的child（子）元素	集合元素	$(“div > span”)选取<div>元素下元素名是<span>的子元素
+$(“prev + next”)	选取紧邻在prev元素后的next元素	集合元素	$(“.one + div”)选取class为one的下一个<div>兄弟元素
+$(“prev~siblings”)	选取prev元素之后的所有的siblings元素	集合元素	$(“#two ~ div”)选取id为two的元素后面的所有<div>兄弟元素
+
+
+ 2.3 过滤选择器
+2.3.1基本过滤选择器
+选择器	描述	返回值	示例
+:first	匹配找到的第一个元素	单个元素	查找表格的第一行:$("tr:first")
+:last	匹配找到的最后一个元素	单个元素	查找表格的最后一行:$("tr:last")
+:not(selector)	去除所有与给定选择器匹配的元素	集合元素	查找所有未选中的 input 元素: $("input:not(:checked)")
+:even	匹配所有索引值为偶数的元素，从 0 开始计数	集合元素	查找表格的1、3、5...行:$("tr:even")
+:odd	匹配所有索引值为奇数的元素，从 0 开始计数	集合元素	查找表格的2、4、6行:$("tr:odd")
+:eq(index)	匹配一个给定索引值的元素注:index从 0 开始计数	集合元素	查找第二行:$("tr:eq(1)")
+:gt(index)	匹配所有大于给定索引值的元素注:index从 0 开始计数	集合元素	查找第二第三行，即索引值是1和2，也就是比0大:$("tr:gt(0)")
+:lt(index)	选择结果集中索引小于 N 的 elements注:index从 0 开始计数	集合元素	查找第一第二行，即索引值是0和1，也就是比2小:$("tr:lt(2)")
+:header	选择所有h1,h2,h3一类的header标签.	集合元素	给页面内所有标题加上背景色: $(":header").css("background", "#EEE");
+:animated	匹配所有正在执行动画效果的元素	集合元素	只有对不在执行动画效果的元素执行一个动画特效:
+$("#run").click(function(){$("div:not(:animated)").animate({ left: "+=20" }, 1000);});
+
+2.3.2 属性过滤器：
+选择器	描述	返回值	示例
+[attribute]	匹配包含给定属性的元素	集合元素	查找所有含有 id 属性的 div 元素:$("div[id]")
+[attribute=value]
+	匹配给定的属性是某个特定值的元素
+	集合元素	查找所有 name 属性是 newsletter 的 input 元素:$("input[name='newsletter']").attr("checked", true);
+
+[attribute!=value]	匹配给定的属性是不包含某个特定值的元素	集合元素	查找所有 name 属性不是 newsletter 的 input 元素:$("input[name!='newsletter']").attr("checked", true);
+[attribute^=value]	匹配给定的属性是以某些值开始的元素	集合元素	$("input[name^='news']")
+[attribute$=value]	匹配给定的属性是以某些值结尾的元素	集合元素	查找所有 name 以 'letter' 结尾的 input 元素:$("input[name$='letter']")
+[attribute*=value]	匹配给定的属性是以包含某些值的元素	集合元素	查找所有 name 包含 'man' 的 input 元素:$("input[name*='man']")
+[attributeFilter1][attributeFilter2]
+[attributeFilterN]	复合属性选择器，需要同时满足多个条件时使用。	集合元素	找到所有含有 id 属性，并且它的 name 属性是以 man 结尾的:$("input[id][name$='man']")
+内容过滤器选择器，可见性过滤器选择器，父子过滤器选择器
+
+2.3.3 表单选择器
+选择器	描述	返回值	示例
+:input	匹配所有input,textarea,select和button元素	集合元素	查找所有的input元素:$(":input")
+:text	匹配所有的单行文本框.	集合元素	查找所有文本框:$(":text")
+:password	匹配所有密码框.	集合元素	查找所有密码框:$(":password")
+:radio	匹配所有单选按钮.	集合元素	查找所有单选按钮
+:checkbox	匹配所有复选框	集合元素	查找所有复选框:$(":checkbox")
+:submit	匹配所有提交按钮.	集合元素	查找所有提交按钮:$(":submit")
+:image	匹配所有图像域.	集合元素	匹配所有图像域:$(":image")
+:reset	匹配所有重置按钮.	集合元素	查找所有重置按钮:$(":reset")
+:button	匹配所有按钮.这个包括直接写的元素button.	集合元素	查找所有按钮:$(":button")
+:file	匹配所有文件域.	集合元素	查找所有文件域:$(":file")
+
+
+第三章   JQuery中的Dom操作
+3.1  Dom的分类：
+·Dom Core：getElementById,getElementByTagName,getAttribute和setAttribute等方法。
+·HTML Dom：document.forms,element.src。
+·CSS-DOM：element.style.color=”red”;
+3.2  jQuery中Dom的分类：
+3.2.1 查找节点
+　3.2.1.1 查找元素节点
+	var $li = $(‘ul li:eq(1)’);//获取ul中的第二个li节点
+	var li_txt = $li.text(); //获取第二个li节点的文本内容
+	alert(li_txt);//打印文本内容
+
+　3.2.1.2查找属性节点：使用attr()方法来获取元素的各个属性的值。
+	var $para = $(‘p’);
+	var p_txt = $para.attr(“title”);
+		alert(p_txt);
+3.2.2 创建节点:$(html)
+var $li_1 = $(“<li></li>”);
+var $li_2 = $(“<li></li>”);
+$(“ul”).append($li_1);
+$(“ul”).append($li_2);
+3.2.3 插入节点
+.append().appendTo().prepend().prependTo().after().insertAfter().before().insertBefore()
+3.2.4 删除节点
+.remove ()： 删除节点，返回当前删除的对象;
+.empty()： 清空节点里面的内容;
+3.2.5 复制节点
+　.clone():复制当前的节点。
+3.2.6 替换节点
+.replace With();
+.replace All()。
+3.2.7包裹节点
+.wrap();
+.wrap All()。
+3.3 属性操作
+		.attr(“title”);//获取属性
+　.attr(“title”,”提示”);//设置属性
+		.remove Attr(“title”);//删除属性
+3.4 样式操作
+		attr(“class”, “”);// 仅仅是修改样式，样式只有一个。
+		Add Class(“”); // 追加样式，可以出现多个样式
+　Remove Class(“”);// 删除样式
+　Toggle Class(“”);//切换样式
+　Has Class(“”);//判断某个元素中是否含该样式 = $(‘p’).is(“.another”)
+	3.5遍历节点
+		children()：取得匹配元素的所有孩子的元素。类似：childNodes
+		next()：取得匹配元素的后一个同辈元素。
+		prev()：取得匹配元素的前一个同辈元素。
+		siblings()：取得匹配元素前后所有的同辈元素。
+　 closest()：取得最近的匹配元素。首先检查当前元素是否匹配，匹配的话则返回当前元素，否则向上查找父元素，直到找到为止。
+3.6  CSS-Dom操作
+	    $(‘p’).css(“height”);//取得属性
+　　$(‘p’).css(“height”，”20px”);//设置单个属性
+　　$(‘p’).css({"top":"10px","left":"20px"});// 设置多个css属性
+　　
+　　$(‘p’).height();
+　　$(‘p’).height“20px”();
+　　$(‘p’).backgroundColor();
+　　$(‘p’). backgroundColor (“red”); // 采用驼峰式写法
+　　
+　　注：html(),text().val()方法也很常用。
+
+
+------------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+    </head>
+    <body>
+        <h3>jQuery的使用原理</h3>
+        <ul>
+            <li>aaaa</li>
+            <li id="bid">bbbb</li>
+            <li>cccc</li>
+            <li>dddd</li>
+        </ul>
+        <script type="text/javascript">
+            //定义一个$函数。目的是快速获取id属性值的对应节点
+           function $(id){
+                return document.getElementById(id);
+           }
+           
+           //使用自定义的$函数快速获取节点
+           $("bid").style.color="blue";
+        </script>
+    </body>
+</html>
+
+--------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    </head>
+    <body>
+        <h3>jQuery的实例：导入使用</h3>
+        <ul>
+            <li>aaaa</li>
+            <li>bbbb</li>
+            <li>cccc</li>
+            <li>dddd</li>
+        </ul>
+        <script type="text/javascript">
+           $("li:eq(1)").css("color","red");
+          
+        </script>
+    </body>
+</html>
+
+-------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+          
+          //jQuery简版：页面加载完成后自动执行的程序
+          $(function(){
+            $("h3").css("color","red");
+            
+          });
+          
+          /*
+          //jQuery版：页面加载完成后自动执行的程序
+          $(document).ready(function(){
+             $("h3").css("color","blue");
+          });
+          */
+          /*
+           //js版：页面加载完成后自动调用函数
+           window.onload=function(){
+                $("h3").css("color","red");
+           }
+          */
+        </script>
+    </head>
+    <body>
+        <h3>jQuery的实例：入口使用</h3>
+        <ul>
+            <li>aaaa</li>
+            <li>bbbb</li>
+            <li>cccc</li>
+            <li>dddd</li>
+        </ul>
+        
+    </body>
+</html>
+
+-------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //获取id值为did的节点并设置属性(id选择符)
+            $("#did").css("font-size","30px");
+            
+            //获取指定的HTML标签并设置样式（HTML选择符）
+            $("li").css("color","blue");
+            
+            //获取class属性等于指定值的节点，并设置样式（类选择符）
+            $(".cc").css("background-color","#ededed");
+            
+            //设置所有h标签，设置统一样式（选择符组）
+            $("h1,h2,h3,h4,h5,h6").css("color","red");
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的选择器实例：基本选择器</h3>
+        <h4 class="cc">jQuery的选择器实例：基本选择器</h4>
+        <ul>
+            <li>aaaa</li>
+            <li id="did">bbbb</li>
+            <li>cccc</li>
+            <li class="cc">dddd</li>
+        </ul>
+        
+    </body>
+</html>
+
+------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //将ul中的所有li(儿子孙子...)设置统一样式red
+            //$("ul li").css("color","red");
+            
+            //将ul中的子节点li，设置统一样式
+            $("ul > li").css("color","red");
+            
+            //紧邻ul后面第一个li节点。
+            $("ul + li").css("background-color","#ddd");
+            
+            //设置ul后面所有兄弟li节点
+            $("ul ~ li").css("color","#f0f");
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的选择器实例：层级选择器</h3>
+        <ul>
+            <li>aaaaa</li>
+            <li>bbbbb</li>
+            <li>ccccc</li>
+            <ol>
+                <li>ddddd</li>
+                <li>eeeee</li>
+                <li>fffff</li>
+            </ol>
+        </ul>
+        <li>ggggg</li>
+        <li>hhhhh</li>
+        <li>kkkkk</li>
+        
+    </body>
+</html>
+
+-----------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //获取第一个li节点
+            //$("li:first").css("color","red");
+            //最后一个li节点
+            //$("li:last").css("color","blue");
+            
+            //从索引位置0开始的偶数行，采用此字段
+            //$("li:even").css("background-color","yellow");
+            
+            //从索引位置0开始的奇数行，采用此样式。
+            //$("li:odd").css("background-color","#ddd");
+            
+            //获取前3个li
+            $("li:lt(3)").css("color","red");
+            //匹配所有大于给定索引值的元素
+            $("li:gt(3)").css("color","blue");
+            
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的选择器实例：基本选择器</h3>
+        <ul>
+            <li>1.aaaaa</li>
+            <li>2.bbbbb</li>
+            <li>3.ccccc</li>
+            <li>4.ddddd</li>
+            <li>5.eeeee</li>
+            <li>6.fffff</li>
+            <li>7.ggggg</li>
+            <li>8.hhhhh</li>
+            <li>9.kkkkk</li>
+        </ul>
+    </body>
+</html>
+
+----------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //获取包含value属性值的input标签
+            //var a = $("input[value]");
+            //alert(a.length);
+            
+            //获取input标签中name属性值为uname节点
+            //$("input[name='uname']").css("border","1px solid blue");
+            
+            //获取input中以e字符结尾的name属性节点。
+            //$("input[name$='e']").css("border","1px solid blue");
+            
+            //让性别女选中
+            $("input[value=0]").attr("checked",true);
+            
+            //为姓名字段设置一个zhangsan的属性值
+            $("input[name='uname']").val("zhangsan");
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的选择器实例：属性选择器</h3>
+        <ul>
+           <li>姓名：<input type="text" name="uname"/></li>
+           <li></li>
+           <li>年龄：<input type="text" name="age"/></li>
+           <li></li>
+           <li>性别：<input type="radio" name="sex" value="1"/>男
+                     <input type="radio" name="sex" value="0"/>女
+           </li>
+        </ul>
+    </body>
+</html>
+
+----------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //获取所有的按钮并添加点击事件
+            $("button").click(function(){
+                //获取按钮上的字并判断
+                switch($(this).html()){
+                    case "全选":
+                        //获取所有多选择
+                        $("input:checkbox").attr("checked",true);
+                        break;
+                    case "全不选":
+                        $("input:checkbox").attr("checked",false);
+                        break;
+                    case "反选":
+                        //获取所有选中，
+                        var list = $("input:checked");
+                        //执行所有选中，
+                        $("input:checkbox").attr("checked",true);
+                        //将刚才获取选中的设置不选中
+                        list.attr("checked",false);
+                        break;
+                }
+            });
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的选择器实例：实现全选和全不选</h3>
+        <ul>
+           <li><input type="checkbox" name="like[]" value="1"/>aaaa</li>
+           <li><input type="checkbox" name="like[]" value="2"/>aaaa</li>
+           <li><input type="checkbox" name="like[]" value="3"/>aaaa</li>
+           <li><input type="checkbox" name="like[]" value="4"/>aaaa</li>
+           <li><input type="checkbox" name="like[]" value="5"/>aaaa</li>
+           <li><input type="checkbox" name="like[]" value="6"/>aaaa</li>
+           <li><input type="checkbox" name="like[]" value="7"/>aaaa</li>
+        </ul>
+        <button>全选</button>
+        <button>全不选</button>
+        <button>反选</button>
+    </body>
+</html>
+
+-----------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //获取每个ul中的第二个li
+            //$("ul li:nth-child(2)").css("color","red");
+            
+            //获取每个ul中的第一个li
+            //$("ul li:first-child").css("color","red");
+            
+            //获取每个ul中的最后一个li
+            $("ul li:last-child").css("color","red");
+            
+            //获取ul中只有一个li子节点。
+            //$("ul li:only-child");
+            
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的选择器实例：子元素选择符</h3>
+        <ul>
+          <li>John</li>
+          <li>Karl</li>
+          <li>Brandon</li>
+        </ul>
+        <ul>
+          <li>Glen</li>
+          <li>Tane</li>
+          <li>Ralph</li>
+        </ul>
+    </body>
+</html>
+
+-------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //获取按钮绑定点击事件
+            $("button").click(function(){
+                //获取输入框中的值
+                var v = $("input[name='name']").val();
+                
+                //获取按钮上面的字并执行对应的操作
+                switch($(this).html()){
+                    case "插入到前面":
+                        //$("#uid").prepend("<li>"+v+"</li>");
+                        $("<li>"+v+"</li>").prependTo("#uid");
+                        break;
+                        
+                    case "插入到后面":
+                        //$("#uid").append("<li>"+v+"</li>");
+                        $("<li>"+v+"</li>").appendTo("#uid");
+                        break;
+                }
+                
+                //清空输入框
+                $("input[name='name']").val("");
+            });
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的节点操作实例：节点的内部插入</h3>
+        <ul id="uid">
+          <li>John</li>
+          <li>Karl</li>
+          <li>Brandon</li>
+        </ul>
+        
+        姓名：<input type="text" name="name"/>
+        <button>插入到前面</button>
+        <button>插入到后面</button>
+    </body>
+</html>
+
+-------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+         //jQuery入口
+         $(function(){
+            //获取所有的input输入框
+            $("input:text").focus(function(){
+               //获取焦点事件处理
+               //获取输入框中德尔title信息
+               var info = $(this).attr("title");
+               //将创建一个span标签添加到后面
+               $(this).after("<span>请输入正确"+info+"的信息</span>");
+            }).blur(function(){
+               //失去焦点事件处理
+               //删除后面的span标签
+               $(this).next("span").remove();
+            });
+         });
+        </script>
+    </head>
+    <body>
+        <h3 class="cc">jQuery的节点操作实例：节点的外部插入</h3>
+        姓名：<input type="text" name="name" title="姓名"/><br/><br/>
+        年龄：<input type="text" name="age" title="年龄"/><br/><br/>
+        班级：<input type="text" name="cid" title="班级"/><br/><br/>
+        身高：<input type="text" name="hei" title="身高"/><br/><br/>
+        体重：<input type="text" name="name" title="体重"/><br/><br/>
+        地址：<input type="text" name="name" title="地址"/><br/><br/>
+       
+    </body>
+</html>
+　　
+===============================================================　　
+第四章  JQuery中的事件和动画
+4.1事件绑定
+bind(type, [, data], fn])
+ type(String) : 事件类型；事件类型包括以下：blur, focus, load, resize,scroll,mouseover,mouseout,dbclick,click等等。
+data(Object) : (可选) 作为event.data属性值传递给事件对象的额外数据对象。
+fn(Function) : 绑定到每个匹配元素的事件上面的处理函数。
+
+exe1.
+$("p").bind("click", function(){  alert( $(this).text() );});
+
+exe2.
+function handler(event) {  alert(event.data.foo);}$("p").bind("click", {foo: "bar"}, handler) ;
+
+4.2合成事件
+jQuery有两个合成事件：hover（）和toggle（）的方法。
+hover（enter，leave）。作用是模拟光标悬停事件。当光标移动到元素上时，会触发指定的第一个函数；当光标移出这个元素的时候，会触发指定的第二个函数。
+toggle（fn1，fn2，…fnN）。作用是用于模拟鼠标连续单击事件。第一单击执行第一个函数，第二次单击执行第二个函数，直到最后一个。然后循环执行函数。
+
+4.3事件冒泡
+stopPropagation() 方法只阻止一个事件起泡。
+preventDefault() 方法只取消默认的行为。
+	二者均可以采用简写的方式：return false。
+
+4.4事件属性
+每个浏览器对event都有不同的地方，Jquery对Event做了标准化所以可以放心用。
+　　* 。target   这个反应触发事件的DOM对象，可以在事件冒泡的时候判断是否是事件源头(compare event.target to this)
+　　* .pageX:  鼠标的left属性，相对于page 
+　　* .pageY:  鼠标的top属性，相对于page 
+　　* preventDefault():  这个方法被调用，则原有事件就被忽略。（例如 clicked link就不会去新的Url了） 
+　　* stopPropagation():让Jquery停止事件冒泡 
+　　* .Data:  如果事件中还有EventData你就可以用这个属性获得对应Eventdata数据了。 
+　　* ctrlKey: 类型: Boolean, 说明: Ctrl 键是否按下
+　　* shift Key: 类型: Boolean, 说明: Shift键是否按下
+　　　　 * alt Key: 类型: Boolean, 说明: Alt 键是否按下 
+　　* char Code: 类型: Number, 说明: 最后响应键盘按键的 charCode 值 
+　　* key Code: 类型: Number, 说明: 最后响应键盘按键的 keyCode 值
+　　* button: 类型: Number, 说明: 按下的鼠标键, 左键:1, 右键:2, 中键:4
+* which: 类型: Number, 说明: 最后响应的是哪个按键, 如果是键盘按键则等于 char Code || key Code; 如果是鼠标按键, 左键:1, 右键:3, 中键2 
+　　type : 事件类型 
+related Target:对于鼠标事件, 标示触发事件时离开或者进入的DOM元素 current Target:冒泡前的当前触发事件的DOM对象, 等同于this. 
+result: 上一个事件处理函数返回的值 
+screen X/Y:对于鼠标事件, 获取事件相对于屏幕原点的水平/垂直坐标。
+
+4.5  移出事件
+unbind（[type][,data]）。
+如果没有参数则删除所有的事件。
+如果提供了事件的类型做参数，则只删除该类型参数的绑定的事件。
+如果把绑定的的函数名称作为参数，那么只删除对应的函数。
+
+4.6  模拟操作
+1.trigger（type[,data]）。该方法是用来模拟操作。
+　$("p").trigger("click")。
+
+2.triggerHandler(type,[data])。这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。但不会执行浏览器默认动作
+　　参数：
+　　type(String) : 要触发的事件类型。
+　　	data(Array) : (可选)传递给事件处理函数的附加参数。
+$("#old").click(function(){  $("input").trigger("focus");});
+
+4.7  动画效果
+方法名	说明
+hide和show	同事修改多个样式属性，即高度，宽度，透明度。
+fadeIn和fadeOut	只改变不透明度
+slideUp和slideDown	只改变高度
+fadeTo	只改变透明度
+toggle	用来代替hide方法和show方法，所以会同时修改多个样式的属性即高度，宽度和不透明度。
+slideToggle	用来代替slideUp和slideDown，只能改变高度。
+animate	属于自定义动画的方法，以上各方法的实质都是调用该函数。
+
+Exe1.
+ $(this).next().toggle("slow");
+Exe2.
+		$(this).next().slideToggle("slow");
+　Exe3.
+　$(this).next().animate({height:"100px"},"slow").animate({height:"toggle"});
+	Exe4.
+		"$('#siderbar').slideUp('slow');
+
+
+第五章   jQuery对表单，表格的操作及更多应用
+5.1  表单的应用
+
+选择器	描述	返回值	示例
+:input	匹配所有input,textarea,select和button元素	集合元素	查找所有的input元素:$(":input")
+:text	匹配所有的单行文本框.	集合元素	查找所有文本框:$(":text")
+:password	匹配所有密码框.	集合元素	查找所有密码框:$(":password")
+:radio	匹配所有单选按钮.	集合元素	查找所有单选按钮
+:checkbox	匹配所有复选框	集合元素	查找所有复选框:$(":checkbox")
+:submit	匹配所有提交按钮.	集合元素	查找所有提交按钮:$(":submit")
+:image	匹配所有图像域.	集合元素	匹配所有图像域:$(":image")
+:reset	匹配所有重置按钮.	集合元素	查找所有重置按钮:$(":reset")
+:button	匹配所有按钮.这个包括直接写的元素button.	集合元素	查找所有按钮:$(":button")
+:file	匹配所有文件域.	集合元素	查找所有文件域:$(":file")
+5.2  表单验证
+1.表格的应用：
+　　奇偶行不同色：
+　　$(this).find('tr:odd > td').css('backgroundColor', opts.oddColor);
+　　$(this).find('tr:even > td').css('backgroundColor', opts.evenColor);
+
+　　鼠标滑过变色：
+　　$(this).mouseover(function(){
+  	  $(this).find('td').css('backgroundColor', opts.overColor);
+　　});
+　　$(this).mouseout(function(){
+   	 if (this.clicked) {
+   	     $(this).find('td').css('backgroundColor', opts.selColor);
+　　} else {
+    	    $(this).find('td').css('backgroundColor', this.origColor);
+    	}
+});
+5.3  其他应用
+	1．网页换皮肤(采用cookie插件)
+	$(function(){
+			var $li =$("#skin li");
+			$li.click(function(){
+				switchSkin( this.id );
+			});
+			var cookie_skin = $.cookie( "MyCssSkin");
+			if (cookie_skin) {
+				switchSkin( cookie_skin );
+			}
+		});
+		function switchSkin(skinName){
+				 $("#"+skinName).addClass("selected")							  	.siblings().removeClass("selected");  //去掉其它同辈<li>元素的选中
+				$("#cssfile").attr("href","css/"+ skinName +".css"); //设置不同皮肤
+				$.cookie( "MyCssSkin" ,  skinName , { path: '/', expires: 10 });
+		}
+		
+------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //此定义函数为内部函数（函数内定义的函数），特点是只能在本函数内使用
+               function aa(){
+                  alert("aa");
+               }
+               $("button").click(function(){
+                    aa();
+               });
+               
+           });
+           
+            //下面函数的调用无效，因为aa数据jQuery入口中的内部函数（作用域有限）
+            //aa();
+            
+        </script>
+    </head>
+    <body>
+        <h3>jQuery的实例：导入使用</h3>
+        <ul>
+            <li>aaaa</li>
+            <li>bbbb</li>
+            <li>cccc</li>
+            <li>dddd</li>
+        </ul>
+       <button>点击</button>
+    </body>
+</html>
+
+---------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //此处可以使用jQuery代码
+               //$("li:even").css("background-color","#ddd");
+           });
+           
+           //此jQuery代码可执行，但是li节点还没有加载出现，故无法实现设置。
+           //$("li:even").css("background-color","#fc0");
+           
+           function doSet(){
+              //此处也可以使用jQuery代码
+              $("li:even").css("background-color","#fc0");
+           }
+           
+           
+        </script>
+    </head>
+    <body>
+        <h3>jQuery的实例：导入使用</h3>
+        <ul>
+            <li>aaaa</li>
+            <li>bbbb</li>
+            <li>cccc</li>
+            <li>dddd</li>
+            <li>aaaa</li>
+            <li>bbbb</li>
+            <li>cccc</li>
+            <li>dddd</li>
+        </ul>
+       <button onclick="doSet()">设置</button>
+    </body>
+</html>
+
+-------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+            li.cc{background-color:#fc0;font-size:18px;}
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //获取超级节点一个
+               var a = $("a:first");
+               //获取节点的某个属性，和标签内的内容
+               alert("超级链接的url："+a.attr("href")+"；名称:"+a.html());
+               
+               //设置属性和节点内的内容。
+               a.attr("href","http://www.163.com");
+               a.html("网易");
+               
+               
+               //获取li节点添加鼠标移入和移出事件
+               $("li").mouseover(function(){
+                    $(this).addClass("cc");
+               }).mouseout(function(){
+                    $(this).removeClass("cc");
+               });
+           });
+           
+          
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：jQuery的节点属性设置</h3>
+        <ul>
+            <li>aaaa</li>
+            <li class="bb dd">bbbb</li>
+            <li class="aa">cccc</li>
+            <li>dddd</li>
+        </ul>
+        <a href="http://www.baidu.com">百度</a>
+    </body>
+</html>
+
+----------------------------------------------------------
+
+<html>
+	<head>
+		<title>jQuery实例</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+	</head>
+	<body>
+		<h2>jQuery实例--使用jQuery操作HTML节点</h2>
+		<table id="tabid" width="500" border="1">
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>年龄</th>
+				<th>班级</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>zhangsan</td><td>女</td>
+				<td>26</td><td>lamp73</td>
+				<td><button onclick="dodel(this)">删除</button></td>
+			</tr>
+			<tr>
+				<td>lisi</td><td>女</td>
+				<td>26</td><td>lamp73</td>
+				<td><button onclick="dodel(this)">删除</button></td>
+			</tr>
+			<tr>
+				<td>wangwu</td><td>女</td>
+				<td>26</td><td>lamp73</td>
+				<td><button onclick="dodel(this)">删除</button></td>
+			</tr>
+			<tr>
+				<td>zhangsan</td><td>女</td>
+				<td>26</td><td>lamp73</td>
+				<td><button onclick="dodel(this)">删除</button></td>
+			</tr>
+			<tr>
+				<td>zhaoliu</td><td>女</td>
+				<td>26</td><td>lamp73</td>
+				<td><button onclick="dodel(this)">删除</button></td>
+			</tr>
+			
+		</table>
+		
+		<h3>添加学生信息</h3>
+			
+			<form id="fid" action="action.php?a=add" method="post" onsubmit="return doAdd()">
+				<table width="260" border="0">
+                <tr>
+					<td>姓名:</td>
+					<td><input type="text" name="name" value="sdf"/></td>
+				</tr>
+				<tr>
+					<td>性别:</td>
+					<td><input type="radio" name="sex" value="m" checked/>男
+						<input type="radio" name="sex" value="w"/>女</td>
+				</tr>
+				<tr>
+					<td>年龄:</td>
+					<td><input type="text" name="age"/></td>
+				</tr>
+				<tr>
+					<td>班级:</td>
+					<td><input type="text" name="classid"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="添加"/>
+						<input type="reset" value="重置"/>
+						
+					</td>
+				</tr>
+                </table>
+			</form>
+			
+		<script type="text/javascript">
+			//执行节点删除
+            function dodel(ob){
+                $(ob).parents("tr").remove();
+            }
+            
+            //执行添加
+            function doAdd(){
+                //获取要添加的信息
+                var name = $("#fid input[name='name']").val();
+                var sex = $("#fid input[name='sex']:checked").val();
+                var age = $("#fid input[name='age']").val();
+                var classid = $("#fid input[name='classid']").val();
+                
+                //拼装添加信息
+                 var str = "<tr>";
+                 str += "<td>"+name+"</td>";
+                 str += "<td>"+sex+"</td>";
+                 str += "<td>"+age+"</td>";
+                 str += "<td>"+classid+"</td>";
+                 str += "<td><button onclick=\"dodel(this)\">删除</button></td>";
+                 str += "</tr>";
+                 
+                 //添加到表格中
+                 $("#tabid").append(str);
+                return false;
+            }
+		</script>
+	</body>
+</html>
+
+--------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+            img{border:2px solid #ddd}
+            img.cc{border:2px solid red}
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               
+               //获取所有的图片
+               $("img").toggle(function(){
+                    $(this).addClass("cc");
+               },function(){
+                    $(this).removeClass("cc");
+               });
+               
+               //获取按钮并添加事件
+               $("button").click(function(){
+                    //根据按钮的文字执行对应的操作
+                    switch($(this).html()){
+                        case "前面添加":
+                            $("img.cc").removeClass("cc").prependTo("#did")
+                            break;
+                        case "后面追加":
+                            $("img.cc").removeClass("cc").appendTo("#did")
+                            break;
+                        case "复制追加":
+                            $("img.cc").removeClass("cc").clone().appendTo("#did");
+                            break;
+                    }
+               });
+           });
+           
+          
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：jQuery的节点操作</h3>
+        <div id="did" style="width:600px;height:400px;border:1px solid blue;"></div>
+        <br/>
+        <img src="./images/Meinv131.jpg" width="100"/>
+        <img src="./images/Meinv132.jpg" width="100"/>
+        <img src="./images/Meinv133.jpg" width="100"/>
+        <img src="./images/Meinv134.jpg" width="100"/>
+        <img src="./images/Meinv135.jpg" width="100"/>
+        <br/><br/>
+        <button>前面添加</button>
+        <button>后面追加</button>
+        <button>复制追加</button>
+    </body>
+</html>
+
+----------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+            img,div{margin:0px;padding:0px;}
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+              //定时调用
+              setInterval(function(){
+                    $("#did img:last").css("width","0px").prependTo("#did").animate({width:"270px"},1000);
+              },2000);
+           });
+         
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：jQuery的节点操作</h3>
+        <div style="width:800px;height:150px;border:1px solid blue;overflow:hidden">
+            <div id="did" style="width:99999px">
+                <img src="./images/Meinv131.jpg" height="150"/><img src="./images/Meinv132.jpg" height="150"/><img src="./images/Meinv133.jpg" height="150"/><img src="./images/Meinv134.jpg" height="150"/><img src="./images/Meinv135.jpg" height="150"/>
+            </div>
+        </div>
+    </body>
+</html>
+
+-------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+           
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+                //获取按钮并添加点击事件
+                $("button").click(function(){
+                    //获取所有的li节点,并且进行遍历。
+                    $("li").each(function(){
+                        $(this).html($(this).html()*2);
+                    });
+                });
+           });
+         
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：jQuery的节点遍历each操作</h3>
+        <ul>
+            <li>2</li>
+            <li>5</li>
+            <li>3</li>
+            <li>8</li>
+            <li>10</li>
+        </ul>
+        <button>乘以2</button>
+    </body>
+</html>
+
+----------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+           
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //获取所有的li节点并添加双击事件
+               $("li").live("dblclick",function(){
+                    alert($(this).html());
+               });
+               
+               //添加按钮事件
+               $("button").click(function(){
+                    var name = $("input[name='name']").val();
+                    $("ul").append("<li>"+name+"</li>");
+               });
+           });
+         
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：事件操作</h3>
+        <ul>
+            <li>aaaaa</li>
+            <li>bbbbb</li>
+            <li>ccccc</li>
+            <li>ddddd</li>
+        </ul>
+        名称：<input type="text" name="name"/>
+        <button>添加</button>
+    </body>
+</html>
+
+---------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+           
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //获取li，并添加鼠标的移入和移出事件
+               /*
+               $("li").mouseover(function(){
+                    $(this).css("background-color","#ddd");
+               }).mouseout(function(){
+                    $(this).css("background-color","#fff");
+               });
+               */
+               
+               $("li").hover(function(){
+                    //鼠标移入事件
+                    $(this).css("background-color","#ddd")
+               },function(){
+                    $(this).css("background-color","#fff")
+               });
+           });
+         
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：事件操作</h3>
+        <ul>
+            <li>aaaaa</li>
+            <li>bbbbb</li>
+            <li>ccccc</li>
+            <li>ddddd</li>
+            <li>aaaaa</li>
+            <li>bbbbb</li>
+            <li>ccccc</li>
+            <li>ddddd</li>
+        </ul>
+        
+    </body>
+</html>
+
+---------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+           
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //获取按钮并添加事件
+               $("button").click(function(){
+                    switch($(this).html()){
+                        case "显示":
+                            $("img").show(1000);
+                            break;
+                        case "隐藏":
+                            $("img").hide(1000);
+                            break;
+                        case "切换":
+                            $("img").toggle(1000);
+                            break;
+                    }
+               });
+           });
+         
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：事件切换操作</h3>
+        <button>显示</button>
+        <button>隐藏</button>
+        <button>切换</button><br/><br/>
+        <img src="./images/Meinv131.jpg" width="300"/>
+        
+    </body>
+</html>
+
+------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+         <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <style type="text/css">
+            select{
+                border:1px solid #ddd;
+                width:80px;
+                height:200px;
+                float:left;
+            }
+            div{
+                width:80px;
+                height:200px;
+                float:left;
+                
+                text-align:center;
+            }
+            div button{
+                margin-top:50px;
+                width:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- HTML注释 -->
+        <h3>jQuery的实例：事件操作</h3>
+        <select id="lid" name="id1" size="10" multiple>
+            <option>刘德华</option>
+            <option>周杰伦</option>
+            <option>周杰</option>
+            <option>郭德纲</option>
+            <option>黄贯中</option>
+            <option>黄家驹</option>
+            <option>张国荣</option>
+            <option>张学友</option>
+            <option>黎明</option>
+        </select>
+        <div>
+            <button onclick="doMove('lid','rid')">>></button>
+            <button onclick="doMove('rid','lid')"><<</button>
+        </div>
+        <select id="rid" name="id2" size="10" multiple>
+        </select>
+        <script type="text/javascript">
+           //移动下拉选项操作
+           function doMove(id1,id2){
+                //获取（id1）被选中的option，取消选中，并添加到指定select（id2）下拉框节点中
+                $("#"+id1).find("option:selected").attr("selected",false).appendTo("#"+id2);
+           }
+        </script>
+    </body>
+</html>
+
+---------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               $("li").click(function(){
+                    $(this).css("background-color","#ddd");
+               });
+           });
+           var m=101;
+           function doAdd(){
+                m++;
+                //创建一个li节点，添加事件并追加到ul中
+                $("<li>"+m+"</li>").click(function(){
+                    $(this).css("background-color","#ddd");
+                }).appendTo("#uid");
+           }
+          
+        </script>
+    </head>
+    <body>
+        <h3>jQuery的实例：事件的绑定</h3>
+        <ul id="uid">
+            <li>aaaa</li>
+            <li>bbbb</li>
+            <li>cccc</li>
+            <li>dddd</li>
+        </ul>
+       <button onclick="doAdd()">创建一个新li</button>
+    </body>
+</html>
+
+------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+           
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //获取按钮并添加事件
+               $("button").click(function(){
+                    switch($(this).html()){
+                        case "显示":
+                            $("img").fadeIn(1000);
+                            break;
+                        case "隐藏":
+                            $("img").fadeOut(1000);
+                            break;
+                        case "切换":
+                            $("img").fadeToggle(1000);
+                            break;
+                    }
+               });
+           });
+         
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：特效：淡入淡出</h3>
+        <button>显示</button>
+        <button>隐藏</button>
+        <button>切换</button><br/><br/>
+        <img src="./images/Meinv132.jpg" width="300"/>
+        
+    </body>
+</html>
+
+-----------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <style type="text/css">
+           
+        </style>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //获取按钮并添加事件
+               $("button").click(function(){
+                    switch($(this).html()){
+                        case "显示":
+                            $("img").slideDown(1000);
+                            break;
+                        case "隐藏":
+                            $("img").slideUp(1000);
+                            break;
+                        case "切换":
+                            $("img").slideToggle(1000);
+                            break;
+                    }
+               });
+           });
+         
+        </script>
+        
+    </head>
+    <body>
+        <h3>jQuery的实例：滑动特效</h3>
+        <button>显示</button>
+        <button>隐藏</button>
+        <button>切换</button><br/><br/>
+        <img src="./images/Meinv133.jpg" width="300"/>
+        
+    </body>
+</html>
+
+===============================================================
+第六章   Ajax的应用
+6.1  load( url, [data], [callback] ) 
+载入远程 HTML 文件代码并插入至 DOM 中,参数：
+url (String) : 请求的HTML页的URL地址。 
+data (Map) : (可选参数) 发送至服务器的 key/value 数据。 
+callback (Callback) : (可选参数) 请求完成时(不需要是success的)的回调函数。 
+
+6.2  jQuery.get( url, [data], [callback] ) 
+使用GET方式来进行异步请求,参数： 
+url (String) :  发送请求的URL地址. 
+data (Map) : (可选) 要发送给服务器的数据，以 Key/value 的键值对形式表示，会做为QueryString附加到请求URL中。 
+callback (Function) : (可选) 载入成功时回调函数(只有当Response的返回状态是success才是调用该方法)。
+
+6.3  jQuery.post( url, [data], [callback], [type] )  
+使用POST方式来进行异步请求,参数： 
+url (String) : 发送请求的URL地址. 
+data (Map) : (可选) 要发送给服务器的数据，以 Key/value 的键值对形式表示。 
+callback (Function) : (可选) 载入成功时回调函数(只有当Response的返回状态是success才是调用该方法)。
+type (String) : (可选)官方的说明是：Type of data to be sent。其实应该为客户端请求的类型(JSON,XML,等等)
+
+6.4  jQuery.getScript( url, [callback] )  
+通过 GET 方式请求载入并执行一个 JavaScript 文件，参数:
+url (String) : 待载入 JS 文件地址。 
+callback (Function) : (可选) 成功载入后回调函数。
+
+6.5 jQuery Ajax 事件 
+Ajax请求会产生若干不同的事件，我们可以订阅这些事件并在其中处理我们的逻辑。在jQuery这里有两种Ajax事件：局部事件 和 全局事件。 
+全局事件：
+方法名称	说明
+ajaxStart()	Ajax请求开始时执行的函数
+ajaxStop()	Ajax请求结束时执行的函数
+ajaxComplete()	Ajax请求完成时执行的函数
+ajaxSend()	Ajax请求发送时执行的函数
+
+局部事件：就是在每次的Ajax请求时在方法内定义的，例如： 
+ $.ajax({
+   beforeSend: function(){
+     // Handle the beforeSend event
+   },
+   complete: function(){
+     // Handle the complete event
+   }
+   // ...
+ });
+全局事件是每次的Ajax请求都会触发的，它会向DOM中的所有元素广播，在上面 getScript() 示例中加载的脚本就是全局Ajax事件。
+
+-------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+              //为按钮添加点击事件
+              $("button").click(function(){
+                 //使用ajax的load操作将信息加载到div中
+                 $("#did").load("1.php");
+              });
+           });
+           
+        </script>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：</h3>
+        <button>加载</button> <br/><br/>
+        <div id="did" style="width:200px;height:200px;border:1px solid blue;"></div>
+    </body>
+</html>
+
+<?php
+//负责Ajax响应数据
+$picname = isset($_POST['pic'])?$_POST['pic']:"pro1.jpg";
+
+echo "<img src='./images/{$picname}' width='150'/>";
+
+?>
+
+-------------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+              //获取所有的li并添加鼠标移入事件
+              $("li").mouseover(function(){
+                  $(this).css("background-color","#fc0");
+                  //获取li的name属性值（图片名）
+                  var picname = $(this).attr("name");
+                  //采用load加载数据
+                  $("#did").load("1.php",{pic:picname});
+              }).mouseout(function(){
+                   $(this).css("background-color","#ddd");
+              });;
+           });
+           
+        </script>
+        <style>
+            ul,li{margin:0px;padding:0px}
+            ul{list-style:none;}
+            li{width:50px;height:25px;float:left;margin-right:2px;background-color:#ddd;}
+        </style>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：使用load()加载对应图片</h3>
+        <ul>
+            <li name="pro1.jpg">百合花</li>
+            <li name="pro2.jpg">粉玫瑰</li>
+            <li name="pro3.jpg">红玫瑰</li>
+            <li name="pro4.jpg">蓝玫瑰</li>
+        </ul>
+        <div style="clear:both;height:5px;"></div>
+        <div id="did" style="width:210px;height:200px;border:1px solid blue;"></div>
+    </body>
+</html>
+
+-------------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+              //获取所有的li并添加鼠标移入事件
+              $("li").mouseover(function(){
+                  $(this).css("background-color","#fc0");
+                  //获取li的name属性值（图片名）
+                  var picname = $(this).attr("name");
+                  //采用post的ajax加载数据
+                  $.post("1.php",{pic:picname},function(data){
+                  //将响应的结果添加到div中
+                  $("#did").html(data);
+                  },"html");
+              }).mouseout(function(){
+                   $(this).css("background-color","#ddd");
+              });;
+           });
+           
+        </script>
+        <style>
+            ul,li{margin:0px;padding:0px}
+            ul{list-style:none;}
+            li{width:50px;height:25px;float:left;margin-right:2px;background-color:#ddd;}
+        </style>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：使用post加载对应图片</h3>
+        <ul>
+            <li name="pro1.jpg">百合花</li>
+            <li name="pro2.jpg">粉玫瑰</li>
+            <li name="pro3.jpg">红玫瑰</li>
+            <li name="pro4.jpg">蓝玫瑰</li>
+        </ul>
+        <div style="clear:both;height:5px;"></div>
+        <div id="did" style="width:210px;height:200px;border:1px solid blue;"></div>
+    </body>
+</html>
+
+--------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+               //获取账号输入框并添加获取焦点和失去焦点事件
+               $("input[name='uname']").focus(function(){
+                    $(this).next("span").remove();
+                    $("<span> 请输入正确账号！</span>").css("color","#666").insertAfter(this);
+               }).blur(function(){
+                    var ob = $(this);
+                    ob.next("span").remove();
+                    
+                    //失去焦点事件处理
+                    //获取输入框的值
+                    var v = ob.val();
+                    //使用ajax验证
+                    $.get("4.php",{uname:v},function(data){
+                        //判断
+                        if(data=="y"){
+                            $("<span> 此账号已存在！</span>").css("color","red").insertAfter(ob);
+                        }else{
+                            $("<span> 此账号可用！</span>").css("color","green").insertAfter(ob);
+                        }
+                    });
+               });
+           });
+           
+        </script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：使用get执行注册账号验证</h3>
+        <form>
+            账号：<input type="text" name="uname"/><br/><br/>
+            密码：<input type="password" name="upass"/><br/><br/>
+            邮箱：<input type="text" name="email"/><br/><br/>
+            <input type="submit" value="注册"/>
+        </form>
+    </body>
+</html>
+
+<?php
+//模拟注册账号验证
+$uname=$_GET['uname'];
+
+$list = array("zhangsan","lisi","wangwu","zhaoliu");
+
+if(in_array($uname,$list)){
+    echo "y";
+}else{
+    echo "n";
+}
+
+?>
+
+------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+              //为按钮添加点击事件
+              $("button").click(function(){
+                 $.get("5.php",function(data){
+                    var info="<ul>";
+                    //遍历响应结果
+                    for(var i=0;i<data.length;i++){
+                        info+="<li>";
+                        info+="姓名:"+data[i].name+"; ";
+                        info+="年龄:"+data[i].age+"; ";
+                        info+="性别:"+data[i].sex+"; ";
+                        info+="</li>";
+                    }
+                    info+="</ul>";
+                    
+                    $("#did").append(info);
+                 },"json");
+              });
+           });
+           
+        </script>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：加载json格式的数据</h3>
+        <button>加载</button> <br/><br/>
+        <div id="did" style="width:300px;height:200px;border:1px solid blue;"></div>
+    </body>
+</html>
+
+<?php
+//响应json格式的数据
+
+$list = array(
+    array("name"=>"张三丰","age"=>60,"sex"=>"男"),
+    array("name"=>"张无忌","age"=>20,"sex"=>"男"),
+    array("name"=>"张翠山","age"=>40,"sex"=>"男"),
+    array("name"=>"殷素素","age"=>35,"sex"=>"女")
+);
+
+echo json_encode($list);
+
+?>
+
+--------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+              //为按钮添加点击事件
+              $("button").click(function(){
+                 //发送ajax
+                 $.ajax({
+                    url:"1.php",    //请求地址
+                    type:"post",     //发送方式
+                    data:{pic:"pro2.jpg"},//请求数据
+                    async:true,     //是否同步
+                    dataType:"html", //响应数据格式
+                    success:function(data){ //成功回调函数
+                        $("#did").html(data);
+                    },
+                    error:function(){   //失败回调函数
+                        alert("ajax请求失败！");
+                    }
+                 });
+              });
+           });
+           
+        </script>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：使用ajax操作</h3>
+        <button>加载</button> <br/><br/>
+        <div id="did" style="width:200px;height:200px;border:1px solid blue;"></div>
+    </body>
+</html>
+
+------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+              //加载省市信息
+             //发送ajax
+             $.ajax({
+                url:"district.php",     //请求地址
+                type:"get",             //发送方式
+                data:{upid:0},          //请求数据
+                async:true,             //是否同步
+                dataType:"json",        //响应数据格式
+                success:function(data){ //成功回调函数
+                   for(var i=0;i<data.length;i++){
+                      var info = '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                      $("#cid").append(info);
+                   }
+                },
+                error:function(){   //失败回调函数
+                    alert("ajax请求失败！");
+                }
+             });
+             
+             
+             //获取所有下拉框并添加选择改变事件
+             $("select").live("change",function(){
+                var ob = $(this);
+                //清除后面所有的select
+                ob.nextAll("select").remove();
+                //ajax加载子城市信息
+                $.ajax({
+                    url:"district.php",     //请求地址
+                    type:"get",             //发送方式
+                    data:{upid:ob.val()},//请求数据
+                    async:true,             //是否同步
+                    dataType:"json",        //响应数据格式
+                    success:function(data){ //成功回调函数
+                       if(data.length>0){
+                           var select = $("<select></select>");
+                           for(var i=0;i<data.length;i++){
+                              var info = '<option value="'+data[i].id+'">'+data[i].name+'</option>';
+                              select.append(info);
+                           }
+                           ob.after(select);
+                       }
+                    },
+                    error:function(){   //失败回调函数
+                        alert("ajax请求失败！");
+                    }
+                 });
+             });
+           });
+           
+        </script>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：使用ajax实现城市级联操作</h3>
+        <select id="cid">
+          <option>-请选择-</option>  
+        </select>
+    </body>
+</html>
+
+<?php
+//使用PDO加载城市信息
+
+try{
+    $pdo = new PDO("mysql:host=localhost;dbname=lamp93;charset=utf8","root","");
+}catch(PDOException $pe){
+    die("数据库连接失败！原因：".$pe->getMessage());
+}
+
+//预处理sql语句
+$sql = "select * from district where upid=?";
+$stmt = $pdo->prepare($sql);
+
+//为sql语句中的问绑定值
+$stmt->bindValue(1,$_GET['upid']+0);
+
+//执行
+$stmt->execute();
+
+//解析结果(以关联式数组解析结果)
+$list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//输出
+echo json_encode($list);
+
+?>
+
+-------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>jQuery的使用</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <script type="text/javascript">
+           //jquery的入口
+           $(function(){
+                loadStu();  
+           });
+           
+           
+           //加载学生信息
+           function loadStu(){
+               //发送ajax
+                $.ajax({
+                    url:"stuAction.php",      //请求地址
+                    type:"get",               //发送方式
+                    data:{a:'select'},        //请求数据
+                    async:true,               //是否同步
+                    dataType:"json",          //响应数据格式
+                    success:function(data){   //成功回调函数
+                        //获取表格
+                        var tb = $("#tabid tbody");
+                        tb.empty();
+                        //遍历数据
+                        for(var i=0;i<data.length;i++){
+                            var info = "<tr>";
+                            info += "<td>"+data[i].id+"</td>";
+                            info += "<td>"+data[i].name+"</td>";
+                            info += "<td>"+data[i].age+"</td>";
+                            info += "<td>"+data[i].sex+"</td>";
+                            info += "<td>"+data[i].classid+"</td>";
+                            info += "<td><button onclick='doDel("+data[i].id+",this)'>删除</button></td>";
+                            info += "</tr>";
+                            tb.append(info);
+                        }
+                    },
+                    error:function(){   //失败回调函数
+                        alert("ajax请求失败！");
+                    }
+                }); 
+           }
+           
+           //执行学生信息删除操作
+           function doDel(sid,bn){
+               if(confirm("确定颜删除吗？")){
+                  $.ajax({
+                    url:"stuAction.php",     //请求地址
+                    type:"get",             //发送方式
+                    data:{a:'del',id:sid},      //请求数据
+                    async:true,             //是否同步
+                    dataType:"text",        //响应数据格式
+                    success:function(data){ //成功回调函数 
+                        if(parseInt(data)>0){
+                            $(bn).parents("tr").remove();
+                        }else{
+                            alert("删除失败！");
+                        }
+                    }
+                   });
+               }
+           }
+           
+           //执行添加
+           function doAdd(form){
+                $.ajax({
+                    url:"stuAction.php?a=insert",     //请求地址
+                    type:"post",             //发送方式
+                    data:$(form).serialize(),//请求数据
+                    async:true,             //是否同步
+                    dataType:"text",        //响应数据格式
+                    success:function(data){ //成功回调函数 
+                         loadStu(); //重新加载学生信息
+                    }
+                });
+                return false;
+           }
+        </script>
+    </head>
+    <body>
+        <h3>jQuery中的Ajax实例：使用ajax实现学生信息管理</h3>
+        <h2>学生信息管理</h2>
+        <table id="tabid" width="700" border="1">
+            <thead>
+                <tr>
+                    <th>学号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>编辑</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <br/>
+        <h3>添加学生信息</h3>
+			<form action="action.php?a=insert" method="post" onsubmit="return doAdd(this);">
+				<table width="280" border="0">
+					<tr>
+						<td align="right">姓名：</td>
+						<td><input type="text" name="name"/></td>
+					</tr>
+					<tr>
+						<td align="right">年龄：</td>
+						<td><input type="text" name="age"/></td>
+					</tr>
+					<tr>
+						<td align="right">性别：</td>
+						<td><input type="radio" name="sex" value="m"/>男 
+						<input type="radio" name="sex" value="w"/>女</td>
+					</tr>
+					<tr>
+						<td align="right">班级：</td>
+						<td><input type="text" name="classid"/></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<input type="submit" value="添加"/>
+							<input type="reset" value="重置"/>
+						</td>
+					</tr>
+				</table>
+			</form>
+    </body>
+</html>
+
+<?php
+//使用PDO加载城市信息
+try{
+    $pdo = new PDO("mysql:host=localhost;dbname=lamp93_mist;charset=utf8","root","");
+}catch(PDOException $pe){
+    die("数据库连接失败！原因：".$pe->getMessage());
+}
+
+//根据参数值的不同执行对应操作
+switch($_GET['a']){
+    case "find": //获取单条信息
+        //预处理sql语句
+        $sql = "select * from stu where id=?";
+        $stmt = $pdo->prepare($sql);
+        //为sql语句中的问绑定值
+        $stmt->bindValue(1,$_GET['id']+0);
+        //执行
+        $stmt->execute();
+        //解析结果(以关联式数组解析结果)
+        $ob = $stmt->fetch(PDO::FETCH_ASSOC);
+        //输出
+        echo json_encode($ob);
+        break;
+    case "insert": //执行添加
+        break;
+    case "del": //执行删除
+        //预处理sql语句
+        $sql = "delete from stu where id=?";
+        $stmt = $pdo->prepare($sql);
+        //为sql语句中的问绑定值
+        $stmt->bindValue(1,$_GET['id']+0);
+        //执行
+        $stmt->execute();
+        //输出影响的函数
+        echo $stmt->rowCount();
+        break;
+    case "update": //执行修改
+        break;
+    case "select": //获取所有信息
+    default:
+        //预处理sql语句
+        $sql = "select * from stu";
+        $stmt = $pdo->prepare($sql);
+        //执行
+        $stmt->execute();
+        //解析结果(以关联式数组解析结果)
+        $list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //输出
+        echo json_encode($list);
+        break;
+}
+
+?>
+
+-------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>JavaScript语法</title>
+        <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+        <style type="text/css">
+            #did{
+               width:200px;height:200px;
+               overflow:hidden;
+               position:absolute;
+               display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>JavaScript中的放大镜实例</h3>
+        <img id="mid" src="./images/Meinv112.jpg" width="384"/>
+        
+        <div id="did">
+            <img src="./images/Meinv112.jpg"/>
+        </div>
+        
+        <script type="text/javascript">
+           //获取mid并添加鼠标的移入、移出和移动事件
+           $("#mid").mouseover(function(){
+               //鼠标移入事件，让did可见
+               //获取事件源位置信息
+               var offset = $(this).offset();
+               //定位did
+               $("#did").css({top:offset.top,left:offset.left+$(this).width()+5}).show();
+           }).mouseout(function(){
+               //鼠标移出事件
+               $("#did").hide();
+           }).mousemove(function(ent){
+                //获取移动的位置
+                //获取事件源位置信息
+                var offset = $(this).offset();
+                var w = ent.pageX-offset.left;
+                var h = ent.pageY-offset.top;
+                //设置did的图片滚动距离
+                $("#did").scrollTop(h*5).scrollLeft(w*5);
+           });
+        </script>
+    </body>
+</html>
+
+------------------------------------------------------
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>JavaScript语法</title>
+        <style type="text/css">
+            #did{
+               width:200px;height:200px;
+               position:absolute;
+               background-color:#ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>JavaScript中的拖拽实例</h3>
+        <div id="did"></div>
+        <script type="text/javascript">
+           //获取did节点
+           var did = document.getElementById("did");
+           //为did添加鼠标按下和抬起事件
+           did.onmousedown=function(ent){
+                did.style.backgroundColor="blue";
+                did.style.cursor="move"; //改变鼠标形状为十字线
+                
+                //获取鼠标在did中的点击位置
+               //兼容IE和火狐浏览器兼容
+               var event = ent || window.event;
+               //计算出鼠标在图片上的移动位置
+               var x =event.clientX-this.offsetLeft;
+               var y =event.clientY-this.offsetTop;
+               
+                //添加鼠标移动事件
+                window.document.onmousemove=function(en){
+                    //兼容IE和火狐浏览器兼容
+                    var even = en || window.event;
+                    //获取并定位did的位置
+                    did.style.left = (even.clientX-x)+"px";
+                    did.style.top = (even.clientY-y)+"px";
+                }
+           }
+           //为did添加鼠标抬起和抬起事件
+           did.onmouseup=function(){
+                did.style.backgroundColor="#ddd";
+                did.style.cursor="default";/*改变鼠标形状*/
+                window.document.onmousemove=null; //去掉鼠标移动事件
+           }
+        </script>
+    </body>
+</html>
+
+
+
