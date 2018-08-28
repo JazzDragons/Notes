@@ -1,4 +1,5 @@
 创建git新目录
+README.md是说明文件
 git init
 git add .
 git commit -a -m "first commit"
