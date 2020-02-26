@@ -24,6 +24,9 @@ mv composer.phar /usr/local/bin/composer
 cd dminit
 composer install //安装到最后如果询问选p
 
+composer require server //安装简易服务器
+php bin/console server:start 127.0.0.1:8000 //简易服务器启动
+
 cd public/admin
 npm install
 ```
