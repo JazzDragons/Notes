@@ -1,49 +1,49 @@
   MySQL
-Ò»¡¢¸ÅÄî£º
-   Êı¾İ£º data
-   Êı¾İ¿â£º DB
-   Êı¾İ¿â¹ÜÀíÏµÍ³£ºDBMS
-   Êı¾İ¿âÏµÍ³£ºDBS
-   MySQL£ºÊı¾İ¿â  
-   mysql£º¿Í»§¶ËÃüÁî£¨ÓÃÀ´Á¬½Ó·şÎñ»ò·¢ËÍsqlÖ¸Áî£©
-   SQL£º½á¹¹»¯²éÑ¯ÓïÑÔ £¬ÆäÖĞMySQLÖ§³ÖÕâ¸ö¡£
-   SQLÓïÑÔ·ÖÎª4¸ö²¿·Ö£ºDDL¡¢DML¡¢DQL¡¢DCL
+ä¸€ã€æ¦‚å¿µï¼š
+   æ•°æ®ï¼š data
+   æ•°æ®åº“ï¼š DB
+   æ•°æ®åº“ç®¡ç†ç³»ç»Ÿï¼šDBMS
+   æ•°æ®åº“ç³»ç»Ÿï¼šDBS
+   MySQLï¼šæ•°æ®åº“  
+   mysqlï¼šå®¢æˆ·ç«¯å‘½ä»¤ï¼ˆç”¨æ¥è¿æ¥æœåŠ¡æˆ–å‘é€sqlæŒ‡ä»¤ï¼‰
+   SQLï¼šç»“æ„åŒ–æŸ¥è¯¢è¯­è¨€ ï¼Œå…¶ä¸­MySQLæ”¯æŒè¿™ä¸ªã€‚
+   SQLè¯­è¨€åˆ†ä¸º4ä¸ªéƒ¨åˆ†ï¼šDDLã€DMLã€DQLã€DCL
    
-¶ş¡¢Á¬½ÓÊı¾İ¿â£º
-   mysql -h Ö÷»úÃû -u ÓÃ»§Ãû  -pÃÜÂë  ¿âÃû
+äºŒã€è¿æ¥æ•°æ®åº“ï¼š
+   mysql -h ä¸»æœºå -u ç”¨æˆ·å  -på¯†ç   åº“å
    
-   C:\>mysql  --²ÉÓÃÄäÃûÕËºÅºÍÃÜÂëµÇÂ½±¾»ú·şÎñ
-   C:\>mysql -h localhost -u root -proot   --²ÉÓÃrootÕËºÅºÍrootÃÜÂëµÇÂ½±¾»ú·şÎñ
-   C:\>mysql -u root -p   --ÍÆ¼ö·½Ê½Ä¬ÈÏµÇÂ½±¾»ú
+   C:\>mysql  --é‡‡ç”¨åŒ¿åè´¦å·å’Œå¯†ç ç™»é™†æœ¬æœºæœåŠ¡
+   C:\>mysql -h localhost -u root -proot   --é‡‡ç”¨rootè´¦å·å’Œrootå¯†ç ç™»é™†æœ¬æœºæœåŠ¡
+   C:\>mysql -u root -p   --æ¨èæ–¹å¼é»˜è®¤ç™»é™†æœ¬æœº
 	 Enter password: ****
 
-   C:\>mysql -u root -p lamp61  --Ö±½Ó½øÈëlamp61Êı¾İ¿âµÄ·½Ê½µÇÂ½
+   C:\>mysql -u root -p lamp61  --ç›´æ¥è¿›å…¥lamp61æ•°æ®åº“çš„æ–¹å¼ç™»é™†
    
-Èı¡¢ÊÚÈ¨£º
-	¸ñÊ½£ºgrant ÔÊĞí²Ù×÷ on ¿âÃû.±íÃû to ÕËºÅ@À´Ô´ identified by 'ÃÜÂë';
+ä¸‰ã€æˆæƒï¼š
+	æ ¼å¼ï¼šgrant å…è®¸æ“ä½œ on åº“å.è¡¨å to è´¦å·@æ¥æº identified by 'å¯†ç ';
 	
-	--ÊµÀı£º´´½¨zhangsanÕËºÅ£¬ÃÜÂë123£¬ÊÚÈ¨lamp61¿âÏÂËùÓĞ±íµÄÔö/É¾/¸Ä/²éÊı¾İ,À´Ô´µØ²»ÏŞ
+	--å®ä¾‹ï¼šåˆ›å»ºzhangsanè´¦å·ï¼Œå¯†ç 123ï¼Œæˆæƒlamp61åº“ä¸‹æ‰€æœ‰è¡¨çš„å¢/åˆ /æ”¹/æŸ¥æ•°æ®,æ¥æºåœ°ä¸é™
 	mysql> grant select,insert,update,delete on lamp61.* to zhangsan@'%' identified by '123';
 	Query OK, 0 rows affected (0.00 sec)
 	
 
-ËÄ¡¢SQLµÄ»ù±¾²Ù×÷
-	mysql>show databases; 	--²é¿´µ±Ç°ÓÃ»§ÏÂµÄËùÓĞÊı¾İ¿â
-	mysql>create database [if not exists] Êı¾İ¿âÃû; --´´½¨Êı¾İ¿â
-	mysql> use test;	--Ñ¡Ôñ½øÈëtestÊı¾İ¿â
-	mysql> drop database Êı¾İ¿âÃû;  --É¾³ıÒ»¸öÊı¾İ¿â 
+å››ã€SQLçš„åŸºæœ¬æ“ä½œ
+	mysql>show databases; 	--æŸ¥çœ‹å½“å‰ç”¨æˆ·ä¸‹çš„æ‰€æœ‰æ•°æ®åº“
+	mysql>create database [if not exists] æ•°æ®åº“å; --åˆ›å»ºæ•°æ®åº“
+	mysql> use test;	--é€‰æ‹©è¿›å…¥testæ•°æ®åº“
+	mysql> drop database æ•°æ®åº“å;  --åˆ é™¤ä¸€ä¸ªæ•°æ®åº“ 
 	
-	mysql> show tables; --²é¿´µ±Ç°¿âÏÂµÄËùÓĞ±í¸ñ
-	mysql> select database();  --²é¿´µ±Ç°ËùÔÚµÄÊı¾İ¿â
-	mysql> desc tb1;  --²é¿´tb1µÄ±í½á¹¹¡£                                                                      
-	mysql> create table demo(	--´´½¨demo±í¸ñ
+	mysql> show tables; --æŸ¥çœ‹å½“å‰åº“ä¸‹çš„æ‰€æœ‰è¡¨æ ¼
+	mysql> select database();  --æŸ¥çœ‹å½“å‰æ‰€åœ¨çš„æ•°æ®åº“
+	mysql> desc tb1;  --æŸ¥çœ‹tb1çš„è¡¨ç»“æ„ã€‚                                                                      
+	mysql> create table demo(	--åˆ›å»ºdemoè¡¨æ ¼
 		-> id int unsigned auto_increment primary key,
 		-> name varchar(16) not null,
 		-> age int,
 		-> sex enum('w','m') not null default 'm');
 	Query OK, 0 rows affected (0.05 sec)
 
-	mysql> desc demo;  --²é¿´±í½á¹¹
+	mysql> desc demo;  --æŸ¥çœ‹è¡¨ç»“æ„
 	+-------+---------------+------+-----+---------+-------+
 	| Field | Type          | Null | Key | Default | Extra |
 	+-------+---------------+------+-----+---------+-------+
@@ -53,108 +53,108 @@
 	+-------+---------------+------+-----+---------+-------+
 	3 rows in set (0.00 sec)
 	
-	mysql>drop table if exists mytab;  -- ³¢ÊÔÉ¾³ımytab±í¸ñ
+	mysql>drop table if exists mytab;  -- å°è¯•åˆ é™¤mytabè¡¨æ ¼
 	
 	
-	--Ìí¼ÓÒ»ÌõÊı¾İ
+	--æ·»åŠ ä¸€æ¡æ•°æ®
 	mysql> insert into demo(name,age,sex) values('zhangsan',20,'w');
 	Query OK, 1 row affected (0.00 sec)
 	
-	mysql> insert into demo values('lisi',22,'m'); --²»Ö¸¶¨×Ö¶ÎÃûÀ´Ìí¼ÓÊı¾İ
+	mysql> insert into demo values('lisi',22,'m'); --ä¸æŒ‡å®šå­—æ®µåæ¥æ·»åŠ æ•°æ®
 	Query OK, 1 row affected (0.00 sec)
 	
-	mysql> insert into demo(name,age) values('wangwu',23); --Ö¸¶¨²¿·Ö×Ö¶ÎÃûÀ´Ìí¼ÓÊı¾İ
+	mysql> insert into demo(name,age) values('wangwu',23); --æŒ‡å®šéƒ¨åˆ†å­—æ®µåæ¥æ·»åŠ æ•°æ®
 	Query OK, 1 row affected (0.00 sec)
 	
-	--ÅúÁ¿Ìí¼ÓÊı¾İ
+	--æ‰¹é‡æ·»åŠ æ•°æ®
 	mysql> insert into demo(name,age,sex) values('aaa',21,'w'),("bbb",22,'m');
 	Query OK, 2 rows affected (0.00 sec)
 	Records: 2  Duplicates: 0  Warnings: 0
 	
-	mysql> select * from demo; --²éÑ¯Êı¾İ
+	mysql> select * from demo; --æŸ¥è¯¢æ•°æ®
 	
-	mysql> update demo set age=24 where name='aaa';  --ĞŞ¸Ä
+	mysql> update demo set age=24 where name='aaa';  --ä¿®æ”¹
 	Query OK, 1 row affected (0.02 sec)
 	Rows matched: 1  Changed: 1  Warnings: 0
 		
-	mysql> delete from demo where name='bbb';  --É¾³ı
+	mysql> delete from demo where name='bbb';  --åˆ é™¤
 	Query OK, 1 row affected (0.00 sec)
 	
 	
-	mysql>\h   -- ¿ì½İ°ïÖú
-	mysql>\c   -- È¡ÏûÃüÁîÊäÈë
-	mysql>\s   -- ²é¿´µ±Ç°Êı¾İ¿âµÄ×´Ì¬
-	mysql>\q   -- ÍË³ömysqlÃüÁîĞĞ
+	mysql>\h   -- å¿«æ·å¸®åŠ©
+	mysql>\c   -- å–æ¶ˆå‘½ä»¤è¾“å…¥
+	mysql>\s   -- æŸ¥çœ‹å½“å‰æ•°æ®åº“çš„çŠ¶æ€
+	mysql>\q   -- é€€å‡ºmysqlå‘½ä»¤è¡Œ
 	
-Îå¡¢ MySQLÊı¾İ¿âµÄÊı¾İÀàĞÍ£º
+äº”ã€ MySQLæ•°æ®åº“çš„æ•°æ®ç±»å‹ï¼š
 
-	MySQLµÄÊı¾İÀàĞÍ·ÖÎªËÄ´óÀà£ºÊıÖµÀàĞÍ¡¢×Ö´®ÀàĞÍ¡¢ÈÕÆÚÀàĞÍ¡¢NULL¡£
+	MySQLçš„æ•°æ®ç±»å‹åˆ†ä¸ºå››å¤§ç±»ï¼šæ•°å€¼ç±»å‹ã€å­—ä¸²ç±»å‹ã€æ—¥æœŸç±»å‹ã€NULLã€‚
 	
-	5.1 ÊıÖµÀàĞÍ£º
-		*tinyint(1×Ö½Ú)
-		smallint(2×Ö½Ú)
-		mediumint(3×Ö½Ú)
-		*int(4×Ö½Ú)
-		bigint(8×Ö½Ú)
-		*float(4×Ö½Ú)   float(6,2)
-		*double(8×Ö½Ú)  
-		decimal(×Ô¶¨Òå)×Ö´®ĞÎÊıÖµ
+	5.1 æ•°å€¼ç±»å‹ï¼š
+		*tinyint(1å­—èŠ‚)
+		smallint(2å­—èŠ‚)
+		mediumint(3å­—èŠ‚)
+		*int(4å­—èŠ‚)
+		bigint(8å­—èŠ‚)
+		*float(4å­—èŠ‚)   float(6,2)
+		*double(8å­—èŠ‚)  
+		decimal(è‡ªå®šä¹‰)å­—ä¸²å½¢æ•°å€¼
 		
-	 5.2 ×Ö´®ÀàĞÍ
-		ÆÕÍ¨×Ö´®
-		*char  ¶¨³¤×Ö´®   	 char(8)  
-		*varchar ¿É±ä×Ö´® varchar(8)
+	 5.2 å­—ä¸²ç±»å‹
+		æ™®é€šå­—ä¸²
+		*char  å®šé•¿å­—ä¸²   	 char(8)  
+		*varchar å¯å˜å­—ä¸² varchar(8)
 		
-		¶ş½øÖÆÀàĞÍ
+		äºŒè¿›åˆ¶ç±»å‹
 		tinyblob
 		blob
 		mediumblob
 		longblob
 		
-		ÎÄ±¾ÀàĞÍ
+		æ–‡æœ¬ç±»å‹
 		tinytext
-		*text      ³£ÓÃÓÚ<textarea></textarea>
+		*text      å¸¸ç”¨äº<textarea></textarea>
 		mediumtext
 		longtext
 		
-		*enumÃ¶¾Ù
-		set¼¯ºÏ
+		*enumæšä¸¾
+		seté›†åˆ
 		
-	5.3 Ê±¼äºÍÈÕÆÚÀàĞÍ£º
-		date  ÄêÔÂÈÕ
-		time  Ê±·ÖÃë
-		datatime ÄêÔÂÈÕÊ±·ÖÃë
-		timestamp Ê±¼ä´Á
-		year Äê
+	5.3 æ—¶é—´å’Œæ—¥æœŸç±»å‹ï¼š
+		date  å¹´æœˆæ—¥
+		time  æ—¶åˆ†ç§’
+		datatime å¹´æœˆæ—¥æ—¶åˆ†ç§’
+		timestamp æ—¶é—´æˆ³
+		year å¹´
 	
-	5.4 NULLÖµ
-		NULLÒâÎ¶×Å¡°Ã»ÓĞÖµ¡±»ò¡°Î´ÖªÖµ¡±
-		¿ÉÒÔ²âÊÔÄ³¸öÖµÊÇ·ñÎªNULL
-		²»ÄÜ¶ÔNULLÖµ½øĞĞËãÊõ¼ÆËã
-		¶ÔNULLÖµ½øĞĞËãÊõÔËËã£¬Æä½á¹û»¹ÊÇNULL
-		0»òNULL¶¼ÒâÎ¶×Å¼Ù£¬ÆäÓàÖµ¶¼ÒâÎ¶×ÅÕæ
+	5.4 NULLå€¼
+		NULLæ„å‘³ç€â€œæ²¡æœ‰å€¼â€æˆ–â€œæœªçŸ¥å€¼â€
+		å¯ä»¥æµ‹è¯•æŸä¸ªå€¼æ˜¯å¦ä¸ºNULL
+		ä¸èƒ½å¯¹NULLå€¼è¿›è¡Œç®—æœ¯è®¡ç®—
+		å¯¹NULLå€¼è¿›è¡Œç®—æœ¯è¿ç®—ï¼Œå…¶ç»“æœè¿˜æ˜¯NULL
+		0æˆ–NULLéƒ½æ„å‘³ç€å‡ï¼Œå…¶ä½™å€¼éƒ½æ„å‘³ç€çœŸ
 
-	MySQLµÄÔËËã·û£º
-		ËãÊõÔËËã·û£º+ - * / % 
-		±È½ÏÔËËã·û£º= > < >= <= <> != 
-		Êı¾İ¿âÌØÓĞµÄ±È½Ï£ºin,not in, is null,is not null,like, between and 
-		Âß¼­ÔËËã·û£ºand or not
+	MySQLçš„è¿ç®—ç¬¦ï¼š
+		ç®—æœ¯è¿ç®—ç¬¦ï¼š+ - * / % 
+		æ¯”è¾ƒè¿ç®—ç¬¦ï¼š= > < >= <= <> != 
+		æ•°æ®åº“ç‰¹æœ‰çš„æ¯”è¾ƒï¼šin,not in, is null,is not null,like, between and 
+		é€»è¾‘è¿ç®—ç¬¦ï¼šand or not
 	
- Áù¡¢ ±íµÄ×Ö¶ÎÔ¼Êø£º
-		unsigned ÎŞ·ûºÅ(ÕıÊı)
-		zerofill Ç°µ¼ÁãÌî³ä
-		auto_increment  ×ÔÔö
-		default	Ä¬ÈÏÖµ
-		not null  ·Ç¿Õ
-		PRIMARY KEY Ö÷¼ü £¨·Çnull²¢²»ÖØ¸´£©
-		unique Î¨Ò»ĞÔ   £¨¿ÉÒÔÎªnullµ«²»ÖØ¸´£©
-		index ³£¹æË÷Òı
+ å…­ã€ è¡¨çš„å­—æ®µçº¦æŸï¼š
+		unsigned æ— ç¬¦å·(æ­£æ•°)
+		zerofill å‰å¯¼é›¶å¡«å……
+		auto_increment  è‡ªå¢
+		default	é»˜è®¤å€¼
+		not null  éç©º
+		PRIMARY KEY ä¸»é”® ï¼ˆénullå¹¶ä¸é‡å¤ï¼‰
+		unique å”¯ä¸€æ€§   ï¼ˆå¯ä»¥ä¸ºnullä½†ä¸é‡å¤ï¼‰
+		index å¸¸è§„ç´¢å¼•
 		
-Æß: ½¨±íÓï¾ä¸ñÊ½£º
-	 create table ±íÃû(
-	   ×Ö¶ÎÃû ÀàĞÍ [×Ö¶ÎÔ¼Êø],
-	   ×Ö¶ÎÃû ÀàĞÍ [×Ö¶ÎÔ¼Êø],
-	   ×Ö¶ÎÃû ÀàĞÍ [×Ö¶ÎÔ¼Êø],
+ä¸ƒ: å»ºè¡¨è¯­å¥æ ¼å¼ï¼š
+	 create table è¡¨å(
+	   å­—æ®µå ç±»å‹ [å­—æ®µçº¦æŸ],
+	   å­—æ®µå ç±»å‹ [å­—æ®µçº¦æŸ],
+	   å­—æ®µå ç±»å‹ [å­—æ®µçº¦æŸ],
 	   ...
 	  );
 
@@ -180,7 +180,7 @@
 	+---------+---------------------+------+-----+---------+----------------+
 	5 rows in set (0.00 sec)
 
-	mysql> show create table stu\G  --²é¿´½¨±íµÄÓï¾ä
+	mysql> show create table stu\G  --æŸ¥çœ‹å»ºè¡¨çš„è¯­å¥
 	*************************** 1. row ***************************
 		   Table: stu
 	Create Table: CREATE TABLE `stu` (
@@ -227,75 +227,75 @@
 	6 rows in set (0.00 sec)
 	
 	
-°Ë¡¢ĞŞ¸Ä±í½á¹¹
+å…«ã€ä¿®æ”¹è¡¨ç»“æ„
 -------------------------------------
-    ¸ñÊ½£º alter table ±íÃû action£¨¸ü¸ÄÑ¡Ïî£©;
-     ¸ü¸ÄÑ¡Ïî£º
-        1. Ìí¼Ó×Ö¶Î£ºalter table ±íÃû add ×Ö¶ÎÃûĞÅÏ¢
-            ÀıÈç£º
-                -- ÔÚuser±íµÄ×îºó×·¼ÓÒ»¸önum×Ö¶Î ÉèÖÃÎªint not null
+    æ ¼å¼ï¼š alter table è¡¨å actionï¼ˆæ›´æ”¹é€‰é¡¹ï¼‰;
+     æ›´æ”¹é€‰é¡¹ï¼š
+        1. æ·»åŠ å­—æ®µï¼šalter table è¡¨å add å­—æ®µåä¿¡æ¯
+            ä¾‹å¦‚ï¼š
+                -- åœ¨userè¡¨çš„æœ€åè¿½åŠ ä¸€ä¸ªnumå­—æ®µ è®¾ç½®ä¸ºint not null
                 mysql> alter table user add num int not null;
                 
-                -- ÔÚuser±íµÄemail×Ö¶ÎºóÌí¼ÓÒ»¸öage×Ö¶Î£¬ÉèÖÃint not null default 20£»
+                -- åœ¨userè¡¨çš„emailå­—æ®µåæ·»åŠ ä¸€ä¸ªageå­—æ®µï¼Œè®¾ç½®int not null default 20ï¼›
                 mysql> alter table user add age int not null default 20 after email;
 
-                -- ÔÚuser±íµÄ×îÇ°ÃæÌí¼ÓÒ»¸öaa×Ö¶ÎÉèÖÃÎªintÀàĞÍ
+                -- åœ¨userè¡¨çš„æœ€å‰é¢æ·»åŠ ä¸€ä¸ªaaå­—æ®µè®¾ç½®ä¸ºintç±»å‹
                 mysql> alter table user add aa int first;
 
-        2. É¾³ı×Ö¶Î£ºalter table ±íÃû drop ±»É¾³ıµÄ×Ö¶ÎÃû
-            ÀıÈç£º-- É¾³ıuser±íµÄaa×Ö¶Î
+        2. åˆ é™¤å­—æ®µï¼šalter table è¡¨å drop è¢«åˆ é™¤çš„å­—æ®µå
+            ä¾‹å¦‚ï¼š-- åˆ é™¤userè¡¨çš„aaå­—æ®µ
                  mysql> alter table user drop aa;
 	
-        3. ĞŞ¸Ä×Ö¶Î£ºalter table ±íÃû change[modify] ±»ĞŞ¸ÄºóµÄ×Ö¶ÎĞÅÏ¢
-            ÆäÖĞ£ºchange¿ÉÒÔĞŞ¸Ä×Ö¶ÎÃû£¬ modify ²»ĞŞ¸Ä
-            ÀıÈç£º
-            -- ĞŞ¸Äuser±íÖĞage×Ö¶ÎĞÅÏ¢£¨ÀàĞÍ£©£¬£¨Ê¹ÓÃmodify¹Ø¼ü×ÖµÄÄ¿µÄ²»ĞŞ¸Ä×Ö¶ÎÃû£©
+        3. ä¿®æ”¹å­—æ®µï¼šalter table è¡¨å change[modify] è¢«ä¿®æ”¹åçš„å­—æ®µä¿¡æ¯
+            å…¶ä¸­ï¼šchangeå¯ä»¥ä¿®æ”¹å­—æ®µåï¼Œ modify ä¸ä¿®æ”¹
+            ä¾‹å¦‚ï¼š
+            -- ä¿®æ”¹userè¡¨ä¸­ageå­—æ®µä¿¡æ¯ï¼ˆç±»å‹ï¼‰ï¼Œï¼ˆä½¿ç”¨modifyå…³é”®å­—çš„ç›®çš„ä¸ä¿®æ”¹å­—æ®µåï¼‰
             mysql> alter table user modify age tinyint unsigned not null default 20;
-            -- ĞŞ¸Äuser±íµÄnum×Ö¶Î¸ÄÎªmm×Ö¶Î²¢Ìí¼ÓÁËÄ¬ÈÏÖµ£¨Ê¹ÓÃchange¿ÉÒÔ¸Ä×Ö¶ÎÃû£©
+            -- ä¿®æ”¹userè¡¨çš„numå­—æ®µæ”¹ä¸ºmmå­—æ®µå¹¶æ·»åŠ äº†é»˜è®¤å€¼ï¼ˆä½¿ç”¨changeå¯ä»¥æ”¹å­—æ®µåï¼‰
             mysql> alter table user change num mm int not null default 10;
         
-        4. Ìí¼ÓºÍÉ¾³ıË÷Òı
-            -- Îªuser±íÖĞµÄname×Ö¶ÎÌí¼ÓÎ¨Ò»ĞÔË÷Òı£¬Ë÷ÒıÃûÎªuni_name;
+        4. æ·»åŠ å’Œåˆ é™¤ç´¢å¼•
+            -- ä¸ºuserè¡¨ä¸­çš„nameå­—æ®µæ·»åŠ å”¯ä¸€æ€§ç´¢å¼•ï¼Œç´¢å¼•åä¸ºuni_name;
             mysql> alter table user add unique uni_name(name);
-            -- Îªuser±íÖĞµÄemail×Ö¶ÎÌí¼ÓÆÕÍ¨Ë÷Òı£¬Ë÷ÒıÃûÎªindex_eamil
+            -- ä¸ºuserè¡¨ä¸­çš„emailå­—æ®µæ·»åŠ æ™®é€šç´¢å¼•ï¼Œç´¢å¼•åä¸ºindex_eamil
             mysql> alter table user add index index_email(email);
-            -- ½«user±íÖĞindex_emailµÄË÷ÒıÉ¾³ı
+            -- å°†userè¡¨ä¸­index_emailçš„ç´¢å¼•åˆ é™¤
             mysql> alter table user drop index index_email;
 	
-        5. ¸ü¸Ä±íÃû³Æ£º
-            ALTER TABLE ¾É±íÃû RENAME AS ĞÂ±íÃû
+        5. æ›´æ”¹è¡¨åç§°ï¼š
+            ALTER TABLE æ—§è¡¨å RENAME AS æ–°è¡¨å
 
-        6. ¸ü¸ÄAUTO_INCREMENT³õÊ¼Öµ:
-            ALTER TABLE ±íÃû³Æ AUTO_INCREMENT=1
+        6. æ›´æ”¹AUTO_INCREMENTåˆå§‹å€¼:
+            ALTER TABLE è¡¨åç§° AUTO_INCREMENT=1
         
-        7. ¸ü¸Ä±íÀàĞÍ£º
-            ALTER TABLE ±íÃû³Æ ENGINE="InnoDB"
+        7. æ›´æ”¹è¡¨ç±»å‹ï¼š
+            ALTER TABLE è¡¨åç§° ENGINE="InnoDB"
         
-    MySQLÊı¾İ¿âÖĞµÄ±íÀàĞÍÒ»°ã³£ÓÃÁ½ÖÖ£ºMyISAMºÍInnoDB
-    Çø±ğ£ºMyISAMÀàĞÍµÄÊı¾İÎÄ¼şÓĞÈı¸öfrm(½á¹¹)¡¢MYD£¨Êı¾İ£©¡¢MYI£¨Ë÷Òı£©
-          MyISAMÀàĞÍÖĞµÄ±íÊı¾İÔö É¾ ¸ÄËÙ¶È¿ì£¬²»Ö§³ÖÊÂÎñ£¬Ã»ÓĞInnoDB°²È«¡£
+    MySQLæ•°æ®åº“ä¸­çš„è¡¨ç±»å‹ä¸€èˆ¬å¸¸ç”¨ä¸¤ç§ï¼šMyISAMå’ŒInnoDB
+    åŒºåˆ«ï¼šMyISAMç±»å‹çš„æ•°æ®æ–‡ä»¶æœ‰ä¸‰ä¸ªfrm(ç»“æ„)ã€MYDï¼ˆæ•°æ®ï¼‰ã€MYIï¼ˆç´¢å¼•ï¼‰
+          MyISAMç±»å‹ä¸­çš„è¡¨æ•°æ®å¢ åˆ  æ”¹é€Ÿåº¦å¿«ï¼Œä¸æ”¯æŒäº‹åŠ¡ï¼Œæ²¡æœ‰InnoDBå®‰å…¨ã€‚
           
-          InnoDBÀàĞÍµÄÊı¾İÎÄ¼şÖ»ÓĞÒ»¸ö .frm
-          InnoDBÀàĞÍµÄ±íÊı¾İÔö É¾ ¸ÄËÙ¶ÈÃ»ÓĞMyISAMµÄ¿ì£¬µ«Ö§³ÖÊÂÎñ£¬Ïà¶Ô°²È«¡£
+          InnoDBç±»å‹çš„æ•°æ®æ–‡ä»¶åªæœ‰ä¸€ä¸ª .frm
+          InnoDBç±»å‹çš„è¡¨æ•°æ®å¢ åˆ  æ”¹é€Ÿåº¦æ²¡æœ‰MyISAMçš„å¿«ï¼Œä½†æ”¯æŒäº‹åŠ¡ï¼Œç›¸å¯¹å®‰å…¨ã€‚
         
-¾Å¡¢Êı¾İµÄDML²Ù×÷£ºÌí¼ÓÊı¾İ£¬ĞŞ¸ÄÊı¾İ£¬É¾³ıÊı¾İ
+ä¹ã€æ•°æ®çš„DMLæ“ä½œï¼šæ·»åŠ æ•°æ®ï¼Œä¿®æ”¹æ•°æ®ï¼Œåˆ é™¤æ•°æ®
 ----------------------------------------------------------
-    1. Ìí¼ÓÊı¾İ
-        ¸ñÊ½£º insert into ±íÃû[(×Ö¶ÎÁĞ±í)] values(ÖµÁĞ±í...);
-        --±ê×¼Ìí¼Ó£¨Ö¸¶¨ËùÓĞ×Ö¶Î£¬¸ø¶¨ËùÓĞµÄÖµ£©
+    1. æ·»åŠ æ•°æ®
+        æ ¼å¼ï¼š insert into è¡¨å[(å­—æ®µåˆ—è¡¨)] values(å€¼åˆ—è¡¨...);
+        --æ ‡å‡†æ·»åŠ ï¼ˆæŒ‡å®šæ‰€æœ‰å­—æ®µï¼Œç»™å®šæ‰€æœ‰çš„å€¼ï¼‰
         mysql> insert into stu(id,name,age,sex,classid) values(1,'zhangsan',20,'m','lamp93');
         Query OK, 1 row affected (0.13 sec)
 
         mysql>
-        --Ö¸¶¨²¿·Ö×Ö¶ÎÌí¼ÓÖµ
+        --æŒ‡å®šéƒ¨åˆ†å­—æ®µæ·»åŠ å€¼
         mysql> insert into stu(name,classid) value('lisi','lamp93');
         Query OK, 1 row affected (0.11 sec)
 
-        -- ²»Ö¸¶¨×Ö¶ÎÌí¼ÓÖµ
+        -- ä¸æŒ‡å®šå­—æ®µæ·»åŠ å€¼
         mysql> insert into stu value(null,'wangwu',21,'w','lamp93');
         Query OK, 1 row affected (0.22 sec)
 
-        -- ÅúÁ¿Ìí¼ÓÖµ
+        -- æ‰¹é‡æ·»åŠ å€¼
         mysql> insert into stu values
             -> (null,'zhaoliu',25,'w','lamp94'),
             -> (null,'uu01',26,'m','lamp94'),
@@ -307,46 +307,46 @@
         Query OK, 7 rows affected (0.27 sec)
         Records: 7  Duplicates: 0  Warnings: 0
         
-    2. ĞŞ¸Ä²Ù×÷£º
-        ¸ñÊ½£ºupdate ±íÃû set ×Ö¶Î1=Öµ1,×Ö¶Î2=Öµ2,×Ö¶În=Öµn... where Ìõ¼ş 
+    2. ä¿®æ”¹æ“ä½œï¼š
+        æ ¼å¼ï¼šupdate è¡¨å set å­—æ®µ1=å€¼1,å­—æ®µ2=å€¼2,å­—æ®µn=å€¼n... where æ¡ä»¶ 
         
-        -- ½«idÎª11µÄage¸ÄÎª35£¬sex¸ÄÎªmÖµ
+        -- å°†idä¸º11çš„ageæ”¹ä¸º35ï¼Œsexæ”¹ä¸ºmå€¼
         mysql> update stu set age=35,sex='m' where id=11;
         Query OK, 1 row affected (0.16 sec)
         Rows matched: 1  Changed: 1  Warnings: 0
 
-        -- ½«idÖµÎª12ºÍ14µÄÊı¾İÖµsex¸ÄÎªm£¬classid¸ÄÎªlamp92
-        mysql> update stu set sex='m',classid='lamp92' where id=12 or id=14 --µÈ¼ÛÓÚÏÂÃæ
+        -- å°†idå€¼ä¸º12å’Œ14çš„æ•°æ®å€¼sexæ”¹ä¸ºmï¼Œclassidæ”¹ä¸ºlamp92
+        mysql> update stu set sex='m',classid='lamp92' where id=12 or id=14 --ç­‰ä»·äºä¸‹é¢
         mysql> update stu set sex='m',classid='lamp92' where id in(12,14);
         Query OK, 2 rows affected (0.09 sec)
         Rows matched: 2  Changed: 2  Warnings: 0
         
-    3. É¾³ı²Ù×÷
-         ¸ñÊ½£ºdelete from ±íÃû [where Ìõ¼ş]
-         -- É¾³ıstu±íÖĞidÖµÎª100µÄÊı¾İ
+    3. åˆ é™¤æ“ä½œ
+         æ ¼å¼ï¼šdelete from è¡¨å [where æ¡ä»¶]
+         -- åˆ é™¤stuè¡¨ä¸­idå€¼ä¸º100çš„æ•°æ®
         mysql> delete from stu where id=100;
         Query OK, 0 rows affected (0.00 sec)
 
-        -- É¾³ıstu±íÖĞidÖµÎª20µ½30µÄÊı¾İ
+        -- åˆ é™¤stuè¡¨ä¸­idå€¼ä¸º20åˆ°30çš„æ•°æ®
         mysql> delete from stu where id>=20 and id<=30;
         Query OK, 0 rows affected (0.00 sec)
 
-        -- É¾³ıstu±íÖĞidÖµÎª20µ½30µÄÊı¾İ£¨µÈ¼¶ÓÚÉÏÃæĞ´·¨£©
+        -- åˆ é™¤stuè¡¨ä¸­idå€¼ä¸º20åˆ°30çš„æ•°æ®ï¼ˆç­‰çº§äºä¸Šé¢å†™æ³•ï¼‰
         mysql> delete from stu where id between 20 and 30;
         Query OK, 0 rows affected (0.00 sec)
 
-        -- É¾³ıstu±íÖĞidÖµ´óÓÚ200µÄÊı¾İ
+        -- åˆ é™¤stuè¡¨ä¸­idå€¼å¤§äº200çš„æ•°æ®
         mysql> delete from stu where id>200;
         Query OK, 0 rows affected (0.00 sec)
        
-Ê®¡¢Êı¾İµÄDQL²Ù×÷£ºÊı¾İ²éÑ¯
+åã€æ•°æ®çš„DQLæ“ä½œï¼šæ•°æ®æŸ¥è¯¢
 ==============================================
-    ¸ñÊ½£º
-        select [×Ö¶ÎÁĞ±í]|* from ±íÃû
-        [where ËÑË÷Ìõ¼ş]
-        [group by ·ÖÖ§×Ö¶Î [having ×ÓÌõ¼ş]]
-        [order by ÅÅĞò asc|desc]
-        [limit ·ÖÒ³²ÎÊı]
+    æ ¼å¼ï¼š
+        select [å­—æ®µåˆ—è¡¨]|* from è¡¨å
+        [where æœç´¢æ¡ä»¶]
+        [group by åˆ†æ”¯å­—æ®µ [having å­æ¡ä»¶]]
+        [order by æ’åº asc|desc]
+        [limit åˆ†é¡µå‚æ•°]
         
     mysql> select * from stu;
     +----+----------+-----+-----+---------+
@@ -370,38 +370,38 @@
     +----+----------+-----+-----+---------+
     15 rows in set (0.00 sec)
     
-    1. whereÌõ¼ş²éÑ¯
-    1. ²éÑ¯°à¼¶Îªlamp93ÆÚµÄÑ§ÉúĞÅÏ¢
+    1. whereæ¡ä»¶æŸ¥è¯¢
+    1. æŸ¥è¯¢ç­çº§ä¸ºlamp93æœŸçš„å­¦ç”Ÿä¿¡æ¯
     mysql> select * from stu where classid='lamp93';
     
-    2. ²éÑ¯lamp93ÆÚµÄÄĞÉúĞÅÏ¢£¨sexÎªm£©
+    2. æŸ¥è¯¢lamp93æœŸçš„ç”·ç”Ÿä¿¡æ¯ï¼ˆsexä¸ºmï¼‰
     mysql> select * from stu where classid='lamp93' and sex='m';
     
-    3. ²éÑ¯idºÅÖµÔÚ10ÒÔÉÏµÄÑ§ÉúĞÅÏ¢
+    3. æŸ¥è¯¢idå·å€¼åœ¨10ä»¥ä¸Šçš„å­¦ç”Ÿä¿¡æ¯
     mysql> select * from  stu where id>10;
     
-    4. ²éÑ¯ÄêÁäÔÚ20ÖÁ25ËêµÄÑ§ÉúĞÅÏ¢
+    4. æŸ¥è¯¢å¹´é¾„åœ¨20è‡³25å²çš„å­¦ç”Ÿä¿¡æ¯
     mysql> select * from stu where age>=20 and age<=25;
     mysql> select * from stu where age between 20 and 25;
     
-    5. ²éÑ¯ÄêÁä²»ÔÚ20ÖÁ25ËêµÄÑ§ÉúĞÅÏ¢
+    5. æŸ¥è¯¢å¹´é¾„ä¸åœ¨20è‡³25å²çš„å­¦ç”Ÿä¿¡æ¯
     mysql> select * from stu where age not between 20 and 25;
     mysql> select * from stu where age<20 or age>25;
     
-    6. ²éÑ¯idÖµÎª1,8,4,10,14µÄÑ§ÉúĞÅÏ¢
+    6. æŸ¥è¯¢idå€¼ä¸º1,8,4,10,14çš„å­¦ç”Ÿä¿¡æ¯
     select * from stu where id in(1,8,4,10,14);
     mysql> select * from stu where id=1 or id=8 or id=4 or id=10 or id=14;
     
-    7. ²éÑ¯lamp93ºÍlamp94ÆÚµÄÅ®ÉúĞÅÏ¢
+    7. æŸ¥è¯¢lamp93å’Œlamp94æœŸçš„å¥³ç”Ÿä¿¡æ¯
     mysql> select * from stu where classid in('lamp93','lamp94') and sex='w';
     mysql> select * from stu where (classid='lamp93' or classid='lamp94') and sex='w'
  
 
-  2. MySQLÖĞµÄÍ³¼Æ²éÑ¯£º
+  2. MySQLä¸­çš„ç»Ÿè®¡æŸ¥è¯¢ï¼š
   ----------------------------------------
-     Í³¼Æº¯Êı£¨¾ÛºÏº¯Êı£©£ºcount()  sum()  max()  min()  avg();
+     ç»Ÿè®¡å‡½æ•°ï¼ˆèšåˆå‡½æ•°ï¼‰ï¼šcount()  sum()  max()  min()  avg();
 
-    --Í³¼Æstu±íÖĞµÄÊı¾İÌõÊı£¬ÄêÁä×ÜºÍ£¬×î´óÄêÁä£¬×îĞ¡ÄêÁäºÍÆ½¾ùÄêÁä
+    --ç»Ÿè®¡stuè¡¨ä¸­çš„æ•°æ®æ¡æ•°ï¼Œå¹´é¾„æ€»å’Œï¼Œæœ€å¤§å¹´é¾„ï¼Œæœ€å°å¹´é¾„å’Œå¹³å‡å¹´é¾„
     mysql> select count(*),sum(age),max(age),min(age),avg(age) from stu;
     +----------+----------+----------+----------+----------+
     | count(*) | sum(age) | max(age) | min(age) | avg(age) |
@@ -410,7 +410,7 @@
     +----------+----------+----------+----------+----------+
     1 row in set (0.00 sec)
     
-    --Í³¼Ælamp93ÆÚµÄÑ§ÉúÈËÊıºÍ×î´ó×îĞ¡ÄêÁä£»   
+    --ç»Ÿè®¡lamp93æœŸçš„å­¦ç”Ÿäººæ•°å’Œæœ€å¤§æœ€å°å¹´é¾„ï¼›   
     mysql> select count(*),max(age),min(age) from stu where classid="lamp93";
     +----------+----------+----------+
     | count(*) | max(age) | min(age) |
@@ -419,9 +419,9 @@
     +----------+----------+----------+
     1 row in set (0.00 sec)
     
-  3. ·Ö×é£ºgroup by  ºÍ·Ö×éºóµÄ×ÓÌõ¼şhaving
+  3. åˆ†ç»„ï¼šgroup by  å’Œåˆ†ç»„åçš„å­æ¡ä»¶having
   ------------------------------------------------
-    -- ¶ÔĞÔ±ğ·Ö×é²é¿´
+    -- å¯¹æ€§åˆ«åˆ†ç»„æŸ¥çœ‹
     mysql> select sex from stu group by sex;
     +-----+
     | sex |
@@ -431,79 +431,79 @@
     +-----+
     2 rows in set (0.00 sec)
 
-    -- ²é¿´°´°à¼¶·Ö×é
+    -- æŸ¥çœ‹æŒ‰ç­çº§åˆ†ç»„
     mysql> select classid from stu group by classid;
      
-    -- °´ĞÔ±ğ·Ö×é²¢Í³¼ÆÈËÊı
+    -- æŒ‰æ€§åˆ«åˆ†ç»„å¹¶ç»Ÿè®¡äººæ•°
     mysql> select sex,count(*) from stu group by sex;
 
-    -- °´°à¼¶·Ö×é²¢Í³¼ÆÈËÊı
+    -- æŒ‰ç­çº§åˆ†ç»„å¹¶ç»Ÿè®¡äººæ•°
     mysql> select classid,count(*) from stu group by classid;
 
-    -- Í³¼Ælamp93ÆÚµÄÄĞÅ®Éú¸÷¶àÉÙÈË¡£
+    -- ç»Ÿè®¡lamp93æœŸçš„ç”·å¥³ç”Ÿå„å¤šå°‘äººã€‚
     mysql> select sex,count(*) from stu where classid='lamp93' group by sex;
    
-    -- °´°à¼¶·Ö×éÍ³¼ÆÃ¿¸ö°à¼¶µÄÈËÊı£¬ÒªÇóÖ»Êä³öÈËÊıÔÚ4ÈËÒÔÉÏµÄ
+    -- æŒ‰ç­çº§åˆ†ç»„ç»Ÿè®¡æ¯ä¸ªç­çº§çš„äººæ•°ï¼Œè¦æ±‚åªè¾“å‡ºäººæ•°åœ¨4äººä»¥ä¸Šçš„
     mysql> select classid,count(*) from stu group by classid having count(*)>4;
   
-    -- °´°à¼¶·Ö×éÍ³¼ÆÃ¿¸ö°à¼¶µÄÈËÊı£¬ÒªÇóÖ»Êä³öÈËÊıÔÚ4ÈËÒÔÉÏµÄ£¨ÈËÊıÊ¹ÓÃnum±ğÃû£©
+    -- æŒ‰ç­çº§åˆ†ç»„ç»Ÿè®¡æ¯ä¸ªç­çº§çš„äººæ•°ï¼Œè¦æ±‚åªè¾“å‡ºäººæ•°åœ¨4äººä»¥ä¸Šçš„ï¼ˆäººæ•°ä½¿ç”¨numåˆ«åï¼‰
     mysql> select classid,count(*) num from stu group by classid having num>4; 
     
     
-  4. ÅÅĞò£ºorder by ×Ö¶ÎÃû[asc|desc]   ascÉıĞò£¨Ä¬ÈÏ£©  desc½µĞò
+  4. æ’åºï¼šorder by å­—æ®µå[asc|desc]   ascå‡åºï¼ˆé»˜è®¤ï¼‰  descé™åº
   -------------------------------------------------------------------
-    -- °´ÄêÁäÉıĞòÅÅĞò£¨Ä¬ÈÏasc£©
+    -- æŒ‰å¹´é¾„å‡åºæ’åºï¼ˆé»˜è®¤ascï¼‰
     mysql> select * from stu order by age;
     
-    -- °´ÄêÁä×ö½µĞòÅÅĞò
+    -- æŒ‰å¹´é¾„åšé™åºæ’åº
     mysql> select * from stu order by age desc;
     
-    -- °´ÄêÁäÉıĞòÅÅĞò
+    -- æŒ‰å¹´é¾„å‡åºæ’åº
     mysql> select * from stu order by age asc;
     
-    -- °´ĞÔ±ğÉıĞòÅÅĞò
+    -- æŒ‰æ€§åˆ«å‡åºæ’åº
     mysql> select * from stu order by sex;
     
-    --¶àÁĞÅÅĞò£º°´ĞÔ±ğÅÅĞòÉıĞòÅÅĞò£¬ÏàÍ¬°´ÄêÁäÉıĞòÅÅĞò
+    --å¤šåˆ—æ’åºï¼šæŒ‰æ€§åˆ«æ’åºå‡åºæ’åºï¼Œç›¸åŒæŒ‰å¹´é¾„å‡åºæ’åº
     mysql> select * from stu order by sex,age;
     
-    -- °´°à¼¶½µĞòÅÅĞò£¬ÏàÍ¬µÄ°à¼¶°´ÄêÁäÉıĞòÅÅ
+    -- æŒ‰ç­çº§é™åºæ’åºï¼Œç›¸åŒçš„ç­çº§æŒ‰å¹´é¾„å‡åºæ’
     mysql> select * from stu order by classid desc,age asc;
     
     
-  5. limit ·ÖÒ³Óï¾ä£¨ÌáÈ¡²¿·ÖÊı¾İ£©
+  5. limit åˆ†é¡µè¯­å¥ï¼ˆæå–éƒ¨åˆ†æ•°æ®ï¼‰
   -----------------------------------------------------
-  ¸ñÊ½£º....  limit m  ÌáÈ¡Ç°mÌõ
-        ....  limit m,n  ´ÓmÌõºó¿ªÊ¼ÌáÈ¡Ç°nÌõ
+  æ ¼å¼ï¼š....  limit m  æå–å‰mæ¡
+        ....  limit m,n  ä»mæ¡åå¼€å§‹æå–å‰næ¡
         
-    -- ÌáÈ¡Ç°5ÌõĞÅÏ¢
+    -- æå–å‰5æ¡ä¿¡æ¯
     mysql> select * from stu limit 5;
     
-    -- ÌáÈ¡Ç°3ÌõĞÅÏ¢
+    -- æå–å‰3æ¡ä¿¡æ¯
     mysql> select * from stu limit 3;
 
-    -- ÌáÈ¡Ç°5ÌõĞÅÏ¢
+    -- æå–å‰5æ¡ä¿¡æ¯
     mysql> select * from stu limit 0,5;
     
-    -- ÅÅ³ıÇ°5Ìõ£¬ÌáÈ¡ºó5ÌõĞÅÏ¢
+    -- æ’é™¤å‰5æ¡ï¼Œæå–å5æ¡ä¿¡æ¯
     mysql> select * from stu limit 5,5;
 
-    -- ÅÅ³ıÇ°10Ìõ£¬ÌáÈ¡ºó5ÌõĞÅÏ¢
+    -- æ’é™¤å‰10æ¡ï¼Œæå–å5æ¡ä¿¡æ¯
     mysql> select * from stu limit 10,5;
     
-    --ÌáÈ¡ÄêÁä×î´óµÄ3Ìõ
+    --æå–å¹´é¾„æœ€å¤§çš„3æ¡
     mysql> select * from stu order by age desc limit 3;
     
-    --»ñÈ¡idÎª10µÄÏÂÒ»Ìõ
+    --è·å–idä¸º10çš„ä¸‹ä¸€æ¡
     mysql> select * from stu where id>10 order by id limit 1;
     
-    --»ñÈ¡idÎª10µÄÉÏÒ»Ìõ
+    --è·å–idä¸º10çš„ä¸Šä¸€æ¡
     mysql> select * from stu where id<10 order by id desc limit 1;
     
-    --Ëæ»úÈ¡3Ìõ¡£
+    --éšæœºå–3æ¡ã€‚
     mysql> select * from stu order by rand() limit 3;
     
-    -- »ñÈ¡ÄêÁä×î´óµÄÑ§ÉúĞÅÏ¢£¨²ÉÓÃµÄÇ¶Ì×²éÑ¯£©
+    -- è·å–å¹´é¾„æœ€å¤§çš„å­¦ç”Ÿä¿¡æ¯ï¼ˆé‡‡ç”¨çš„åµŒå¥—æŸ¥è¯¢ï¼‰
     mysql> select * from stu where age=(select max(age) from stu);
     mysql> select * from stu where age in(select max(age) from stu);
     +----+------+-----+-----+---------+
@@ -515,78 +515,78 @@
     2 rows in set (0.00 sec)
     
 
-Ê®Ò»£ºµ¼ÈëºÍµ¼³ö
+åä¸€ï¼šå¯¼å…¥å’Œå¯¼å‡º
 -----------------------------------
--- ½«lamp93¿âµ¼³ö
+-- å°†lamp93åº“å¯¼å‡º
 D:\>mysqldump -u root -p lamp93 >lamp93.sql
 Enter password:
 
----- ½«lamp93¿âÖĞµÄstu±íµ¼³ö
+---- å°†lamp93åº“ä¸­çš„stuè¡¨å¯¼å‡º
 D:\>mysqldump -u root -p lamp93 stu >lamp93_stu.sql
 Enter password:
 
--- ½«lamp93¿âµ¼Èë
+-- å°†lamp93åº“å¯¼å…¥
 D:\>mysql -u root -p lamp93<lamp93.sql
 Enter password:
 
--- ½«lamp93¿âÖĞstu±íµ¼Èë
+-- å°†lamp93åº“ä¸­stuè¡¨å¯¼å…¥
 D:\>mysql -u root -p lamp93<lamp93_stu.sql
 Enter password:
 
 
 
- //ĞèÇó·ÖÎö->¹¦ÄÜ£¨Ä£¿é£©->Êı¾İ¿âÉè¼Æ->ÕÒÊµÌå¡¢ÕÒÊôĞÔ¡¢ÕÒ¹ØÏµ
+ //éœ€æ±‚åˆ†æ->åŠŸèƒ½ï¼ˆæ¨¡å—ï¼‰->æ•°æ®åº“è®¾è®¡->æ‰¾å®ä½“ã€æ‰¾å±æ€§ã€æ‰¾å…³ç³»
  
  
  
--- ±í½á¹¹µÄÔöÉ¾¸Ä²é
+-- è¡¨ç»“æ„çš„å¢åˆ æ”¹æŸ¥
 
--- ÔÚuser±íµÄ×îºó×·¼ÓÒ»¸önum×Ö¶Î ÉèÖÃÎªint not null
+-- åœ¨userè¡¨çš„æœ€åè¿½åŠ ä¸€ä¸ªnumå­—æ®µ è®¾ç½®ä¸ºint not null
 mysql> alter table user add num int not null;
 Query OK, 0 rows affected (0.33 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- ÔÚuser±íµÄemail×Ö¶ÎºóÌí¼ÓÒ»¸öage×Ö¶Î£¬ÉèÖÃint not null default 20£»
+-- åœ¨userè¡¨çš„emailå­—æ®µåæ·»åŠ ä¸€ä¸ªageå­—æ®µï¼Œè®¾ç½®int not null default 20ï¼›
 mysql> alter table user add age int not null default 20 after email;
 Query OK, 0 rows affected (0.30 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- ÔÚuser±íµÄ×îÇ°ÃæÌí¼ÓÒ»¸öaa×Ö¶ÎÉèÖÃÎªintÀàĞÍ
+-- åœ¨userè¡¨çš„æœ€å‰é¢æ·»åŠ ä¸€ä¸ªaaå­—æ®µè®¾ç½®ä¸ºintç±»å‹
 mysql> alter table user add aa int first;
 Query OK, 0 rows affected (0.39 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- É¾³ıuser±íµÄaa×Ö¶Î
+-- åˆ é™¤userè¡¨çš„aaå­—æ®µ
 mysql> alter table user drop aa;
 Query OK, 0 rows affected (0.27 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- ĞŞ¸Äuser±íÖĞage×Ö¶ÎĞÅÏ¢£¨ÀàĞÍ£©£¬£¨Ê¹ÓÃmodify¹Ø¼ü×ÖµÄÄ¿µÄ²»ĞŞ¸Ä×Ö¶ÎÃû£©
+-- ä¿®æ”¹userè¡¨ä¸­ageå­—æ®µä¿¡æ¯ï¼ˆç±»å‹ï¼‰ï¼Œï¼ˆä½¿ç”¨modifyå…³é”®å­—çš„ç›®çš„ä¸ä¿®æ”¹å­—æ®µåï¼‰
 mysql> alter table user modify age tinyint unsigned not null default 20;
 Query OK, 0 rows affected (0.27 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- ĞŞ¸Äuser±íµÄnum×Ö¶Î¸ÄÎªmm×Ö¶Î²¢Ìí¼ÓÁËÄ¬ÈÏÖµ£¨Ê¹ÓÃchange¿ÉÒÔ¸Ä×Ö¶ÎÃû£©
+-- ä¿®æ”¹userè¡¨çš„numå­—æ®µæ”¹ä¸ºmmå­—æ®µå¹¶æ·»åŠ äº†é»˜è®¤å€¼ï¼ˆä½¿ç”¨changeå¯ä»¥æ”¹å­—æ®µåï¼‰
 mysql> alter table user change num mm int not null default 10;
 Query OK, 0 rows affected (0.25 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- Îªuser±íÖĞµÄname×Ö¶ÎÌí¼ÓÎ¨Ò»ĞÔË÷Òı£¬Ë÷ÒıÃûÎªuni_name;
+-- ä¸ºuserè¡¨ä¸­çš„nameå­—æ®µæ·»åŠ å”¯ä¸€æ€§ç´¢å¼•ï¼Œç´¢å¼•åä¸ºuni_name;
 mysql> alter table user add unique uni_name(name);
 Query OK, 0 rows affected (0.27 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- Îªuser±íÖĞµÄemail×Ö¶ÎÌí¼ÓÆÕÍ¨Ë÷Òı£¬Ë÷ÒıÃûÎªindex_eamil
+-- ä¸ºuserè¡¨ä¸­çš„emailå­—æ®µæ·»åŠ æ™®é€šç´¢å¼•ï¼Œç´¢å¼•åä¸ºindex_eamil
 mysql> alter table user add index index_email(email);
 Query OK, 0 rows affected (0.31 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- ½«user±íÖĞindex_emailµÄË÷ÒıÉ¾³ı
+-- å°†userè¡¨ä¸­index_emailçš„ç´¢å¼•åˆ é™¤
 mysql> alter table user drop index index_email;
 Query OK, 0 rows affected (0.25 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
--- ½«user±íµÄ±íÀàĞÍ¸ÄÎªMyiSAM
+-- å°†userè¡¨çš„è¡¨ç±»å‹æ”¹ä¸ºMyiSAM
 mysql> alter table user engine="myisam";
 Query OK, 0 rows affected (0.28 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -598,7 +598,7 @@ Records: 0  Duplicates: 0  Warnings: 0
  
  
  
- -- µÇÂ¼mysqlÊı¾İ¿â
+ -- ç™»å½•mysqlæ•°æ®åº“
 C:\Documents and Settings\Administrator>mysql -u root -p
 Enter password:
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -613,7 +613,7 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql> show databases;  --²é¿´µ±Ç°ÓÃ»§ÏÂÔÊĞí¿´µ½µÄÊı¾İ¿â
+mysql> show databases;  --æŸ¥çœ‹å½“å‰ç”¨æˆ·ä¸‹å…è®¸çœ‹åˆ°çš„æ•°æ®åº“
 +--------------------+
 | Database           |
 +--------------------+
@@ -626,25 +626,25 @@ mysql> show databases;  --²é¿´µ±Ç°ÓÃ»§ÏÂÔÊĞí¿´µ½µÄÊı¾İ¿â
 +--------------------+
 6 rows in set (0.00 sec)
 
-mysql> create database mydb; --´´½¨Êı¾İ¿âmydb
+mysql> create database mydb; --åˆ›å»ºæ•°æ®åº“mydb
 Query OK, 1 row affected (0.13 sec)
 
-mysql> create database mydb; --´´½¨Êı¾İ¿âmydb ±¨´íÔ­ÒòÊÇÊı¾İ¿âÒÑ´æÔÚ
+mysql> create database mydb; --åˆ›å»ºæ•°æ®åº“mydb æŠ¥é”™åŸå› æ˜¯æ•°æ®åº“å·²å­˜åœ¨
 ERROR 1007 (HY000): Can''t create database 'mydb'; database exists
 mysql>
--- ÈômydbÊı¾İ¿â²»´æÔÚÔò´´½¨
+-- è‹¥mydbæ•°æ®åº“ä¸å­˜åœ¨åˆ™åˆ›å»º
 mysql> create database if not exists mydb;
 Query OK, 1 row affected, 1 warning (0.00 sec)
 
--- ³¢ÊÔÉ¾³ımydbÊı¾İ¿â£¨Èô´æÔÚÔòÉ¾³ı£©
+-- å°è¯•åˆ é™¤mydbæ•°æ®åº“ï¼ˆè‹¥å­˜åœ¨åˆ™åˆ é™¤ï¼‰
 mysql> drop database if exists mydb;
 Query OK, 0 rows affected (0.14 sec)
 
 mysql>
-mysql> use lamp93; --Ñ¡Ôñlamp93Êı¾İ¿â
+mysql> use lamp93; --é€‰æ‹©lamp93æ•°æ®åº“
 Database changed
 
-mysql> select database(); --²é¿´µ±Ç°ÔÚÄÄ¸öÊı¾İ¿âÀï
+mysql> select database(); --æŸ¥çœ‹å½“å‰åœ¨å“ªä¸ªæ•°æ®åº“é‡Œ
 +------------+
 | database() |
 +------------+
@@ -653,22 +653,22 @@ mysql> select database(); --²é¿´µ±Ç°ÔÚÄÄ¸öÊı¾İ¿âÀï
 1 row in set (0.00 sec)
 
 
---======MySQLÖĞµÄ±í²Ù×÷========================
+--======MySQLä¸­çš„è¡¨æ“ä½œ========================
 
---1. ´´½¨Êı¾İ±í
-     create table ±íÃû(
-          ×Ö¶ÎÃû ÀàĞÍ [×Ö¶ÎÔ¼Êø],
-          ×Ö¶ÎÃû ÀàĞÍ [×Ö¶ÎÔ¼Êø],
+--1. åˆ›å»ºæ•°æ®è¡¨
+     create table è¡¨å(
+          å­—æ®µå ç±»å‹ [å­—æ®µçº¦æŸ],
+          å­—æ®µå ç±»å‹ [å­—æ®µçº¦æŸ],
           ...
       );
 
 
 mysql>
-mysql> --´´½¨tb1±í£¬ÄÚÓĞÁ½¸ö×Ö¶Î£¨id£¬name£©
+mysql> --åˆ›å»ºtb1è¡¨ï¼Œå†…æœ‰ä¸¤ä¸ªå­—æ®µï¼ˆidï¼Œnameï¼‰
 mysql> create table tb1(id int,name varchar(8));
 Query OK, 0 rows affected (0.31 sec)
 
--- ´´½¨tb2±í£¬ÄÚÓĞ4¸ö×Ö¶Î
+-- åˆ›å»ºtb2è¡¨ï¼Œå†…æœ‰4ä¸ªå­—æ®µ
 mysql> create table tb2(
     -> id int,
     -> name varchar(8),
@@ -677,7 +677,7 @@ mysql> create table tb2(
     -> );
 Query OK, 0 rows affected (0.13 sec)
 
-mysql> show tables; --²é¿´µ±Ç°Êı¾İ¿âÖĞËùÓĞ±í
+mysql> show tables; --æŸ¥çœ‹å½“å‰æ•°æ®åº“ä¸­æ‰€æœ‰è¡¨
 +------------------+
 | Tables_in_lamp93 |
 +------------------+
@@ -686,7 +686,7 @@ mysql> show tables; --²é¿´µ±Ç°Êı¾İ¿âÖĞËùÓĞ±í
 +------------------+
 2 rows in set (0.08 sec)
 
-mysql> desc tb1; --²é¿´tb1µÄ±í½á¹¹
+mysql> desc tb1; --æŸ¥çœ‹tb1çš„è¡¨ç»“æ„
 +-------+------------+------+-----+---------+-------+
 | Field | Type       | Null | Key | Default | Extra |
 +-------+------------+------+-----+---------+-------+
@@ -695,7 +695,7 @@ mysql> desc tb1; --²é¿´tb1µÄ±í½á¹¹
 +-------+------------+------+-----+---------+-------+
 2 rows in set (0.11 sec)
 
-mysql> desc tb2; --²é¿´tb2µÄ±í½á¹¹
+mysql> desc tb2; --æŸ¥çœ‹tb2çš„è¡¨ç»“æ„
 +-------+------------+------+-----+---------+-------+
 | Field | Type       | Null | Key | Default | Extra |
 +-------+------------+------+-----+---------+-------+
@@ -707,7 +707,7 @@ mysql> desc tb2; --²é¿´tb2µÄ±í½á¹¹
 4 rows in set (0.00 sec)
 
 mysql>
--- ²é¿´tb1±íµÄ½¨±íÓï¾ä
+-- æŸ¥çœ‹tb1è¡¨çš„å»ºè¡¨è¯­å¥
 mysql> show create table tb1\G
 *************************** 1. row ***************************
        Table: tb1
@@ -729,13 +729,13 @@ Create Table: CREATE TABLE `tb2` (
 1 row in set (0.00 sec)
 
 mysql>
-mysql> drop table tb1; --É¾³ıÊı¾İ±ítb1
+mysql> drop table tb1; --åˆ é™¤æ•°æ®è¡¨tb1
 Query OK, 0 rows affected (0.09 sec)
 
 
----=========±íÖĞÊı¾İ¿â²Ù×÷=================
---Ìí¼ÓÊı¾İ
---insert into ±íÃû[(×Ö¶ÎÁĞ±í)] values(ÖµÁĞ±í);
+---=========è¡¨ä¸­æ•°æ®åº“æ“ä½œ=================
+--æ·»åŠ æ•°æ®
+--insert into è¡¨å[(å­—æ®µåˆ—è¡¨)] values(å€¼åˆ—è¡¨);
 
 mysql> insert into tb1(id,name) value(2,'lisi');
 Query OK, 1 row affected (0.20 sec)
@@ -757,7 +757,7 @@ mysql> select * from tb1;
 +------+----------+
 4 rows in set (0.00 sec)
 
--- Ò»´ÎĞÔÌí¼Ó¶àÌõÊı¾İ
+-- ä¸€æ¬¡æ€§æ·»åŠ å¤šæ¡æ•°æ®
 mysql> insert into tb1(id,name) values(5,'aa'),(6,"bb"),(7,"cc");
 Query OK, 3 rows affected (0.08 sec)
 Records: 3  Duplicates: 0  Warnings: 0
@@ -776,8 +776,8 @@ mysql> select * from tb1;
 +------+----------+
 7 rows in set (0.00 sec)
 
---2. ²é¿´Êı¾İ
--- select ×Ö¶ÎÃûÁĞ±í|*  from ±íÃû [Ìõ¼ş][·Ö×é][ÅÅĞò][·ÖÒ³]
+--2. æŸ¥çœ‹æ•°æ®
+-- select å­—æ®µååˆ—è¡¨|*  from è¡¨å [æ¡ä»¶][åˆ†ç»„][æ’åº][åˆ†é¡µ]
 mysql> select * from tb1;
 +------+----------+
 | id   | name     |
@@ -792,8 +792,8 @@ mysql> select * from tb1;
 +------+----------+
 7 rows in set (0.00 sec)
 
--- ============ĞŞ¸Ä±íÖĞÊı¾İ=============
--- update ±íÃû set ×Ö¶ÎÃû1=ĞŞ¸ÄÖµ[,×Ö¶ÎÃû2=ĞŞ¸ÄÖµ,...] where Ìõ¼ş£¨ÄÄĞ©Êı¾İÖ´ĞĞĞŞ¸Ä£©
+-- ============ä¿®æ”¹è¡¨ä¸­æ•°æ®=============
+-- update è¡¨å set å­—æ®µå1=ä¿®æ”¹å€¼[,å­—æ®µå2=ä¿®æ”¹å€¼,...] where æ¡ä»¶ï¼ˆå“ªäº›æ•°æ®æ‰§è¡Œä¿®æ”¹ï¼‰
 
 mysql> update tb1 set name='mm' where id=5;
 Query OK, 1 row affected (0.19 sec)
@@ -815,8 +815,8 @@ mysql> select * from tb1;
 
 mysql>
 
--- =======Êı¾İÉ¾³ı============
--- delete from ±íÃû where Ìõ¼ş 
+-- =======æ•°æ®åˆ é™¤============
+-- delete from è¡¨å where æ¡ä»¶ 
 
 mysql> delete from tb1 where id=7;
 Query OK, 1 row affected (0.22 sec)
@@ -840,7 +840,7 @@ mysql>
 
 
 --======================================
--- Ê¹ÓÃ±íÀàĞÍºÍÔ¼Êø´´½¨±í
+-- ä½¿ç”¨è¡¨ç±»å‹å’Œçº¦æŸåˆ›å»ºè¡¨
 --======================================
 mysql> create table stu(
     -> id int unsigned auto_increment primary key,
@@ -850,11 +850,11 @@ mysql> create table stu(
     -> classid char(6)
     -> );
 Query OK, 0 rows affected (0.23 sec)
--- ´´½¨Ñ§Éústu±í
--- id×Ö¶Î intÀàĞÍ ÎŞ·ûºÅ ×ÔÔö Ö÷¼ü
--- ĞÕÃûname×Ö¶Î ÀàĞÍvarchar£¨8£© ·Ç¿Õ Î¨Ò»ĞÔ
--- age×Ö¶Î ÄêÁä ÎŞ·ûºÅ ·Ç¿Õ Ä¬ÈÏÖµ20
--- sex×Ö¶Î Ã¶¾ÙÀàĞÍ
+-- åˆ›å»ºå­¦ç”Ÿstuè¡¨
+-- idå­—æ®µ intç±»å‹ æ— ç¬¦å· è‡ªå¢ ä¸»é”®
+-- å§“ånameå­—æ®µ ç±»å‹varcharï¼ˆ8ï¼‰ éç©º å”¯ä¸€æ€§
+-- ageå­—æ®µ å¹´é¾„ æ— ç¬¦å· éç©º é»˜è®¤å€¼20
+-- sexå­—æ®µ æšä¸¾ç±»å‹
 
 
 mysql> desc stu;
@@ -887,13 +887,13 @@ mysql>
 
 
 
---======Êı¾İ¿âµÄµ¼³öºÍµ¼Èë==========
+--======æ•°æ®åº“çš„å¯¼å‡ºå’Œå¯¼å…¥==========
 
---µ¼³ö
+--å¯¼å‡º
 D:\xampp\htdocs\lamp93\lesson26_mysql>mysqldump -u root -p lamp93>lamp93.sql
 Enter password:
 
---µ¼Èë £¨Ìõ¼şÊÇÊı¾İ¿âlamp93±ØĞëÔÚ£©
+--å¯¼å…¥ ï¼ˆæ¡ä»¶æ˜¯æ•°æ®åº“lamp93å¿…é¡»åœ¨ï¼‰
 D:\xampp\htdocs\lamp93\lesson26_mysql>mysql -u root -p lamp93<lamp93.sql
 Enter password:
 
@@ -901,7 +901,7 @@ Enter password:
 --=====================================================
 
 
--- ´´½¨ÓÃ»§ĞÅÏ¢±í
+-- åˆ›å»ºç”¨æˆ·ä¿¡æ¯è¡¨
 mysql> create table user(
     -> id int unsigned not null auto_increment primary key,
     -> name varchar(16) not null,
@@ -912,7 +912,9 @@ mysql> create table user(
     -> );
 Query OK, 0 rows affected (0.28 sec)
 
--- ²é¿´±í½á¹¹
+-- æŸ¥çœ‹è¡¨ç»“æ„
+show full fields from user; 
+					    
 mysql> desc user;
 +---------+------------------+------+-----+---------+----------------+
 | Field   | Type             | Null | Key | Default | Extra          |
@@ -927,7 +929,7 @@ mysql> desc user;
 6 rows in set (0.08 sec)
 
 mysql>
--- ÔÚuser±íµÄ×îºó×·¼ÓÒ»¸önum×Ö¶Î ÉèÖÃÎªint not null
+-- åœ¨userè¡¨çš„æœ€åè¿½åŠ ä¸€ä¸ªnumå­—æ®µ è®¾ç½®ä¸ºint not null
 mysql> alter table user add num int not null;
 Query OK, 0 rows affected (0.33 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -946,7 +948,7 @@ mysql> desc user;
 +---------+------------------+------+-----+---------+----------------+
 7 rows in set (0.00 sec)
 
--- ÔÚuser±íµÄemail×Ö¶ÎºóÌí¼ÓÒ»¸öage×Ö¶Î£¬ÉèÖÃint not null default 20£»
+-- åœ¨userè¡¨çš„emailå­—æ®µåæ·»åŠ ä¸€ä¸ªageå­—æ®µï¼Œè®¾ç½®int not null default 20ï¼›
 mysql> alter table user add age int not null default 20 after email;
 Query OK, 0 rows affected (0.30 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -966,7 +968,7 @@ mysql> desc user;
 +---------+------------------+------+-----+---------+----------------+
 8 rows in set (0.00 sec)
 
--- ÔÚuser±íµÄ×îÇ°ÃæÌí¼ÓÒ»¸öaa×Ö¶ÎÉèÖÃÎªintÀàĞÍ
+-- åœ¨userè¡¨çš„æœ€å‰é¢æ·»åŠ ä¸€ä¸ªaaå­—æ®µè®¾ç½®ä¸ºintç±»å‹
 mysql> alter table user add aa int first;
 Query OK, 0 rows affected (0.39 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -988,7 +990,7 @@ mysql> desc user;
 9 rows in set (0.00 sec)
 
 mysql>
--- É¾³ıuser±íµÄaa×Ö¶Î
+-- åˆ é™¤userè¡¨çš„aaå­—æ®µ
 mysql> alter table user drop aa;
 Query OK, 0 rows affected (0.27 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -1008,7 +1010,7 @@ mysql> desc user;
 +---------+------------------+------+-----+---------+----------------+
 8 rows in set (0.00 sec)
 
--- ĞŞ¸Äuser±íÖĞage×Ö¶ÎĞÅÏ¢£¨ÀàĞÍ£©£¬£¨Ê¹ÓÃmodify¹Ø¼ü×ÖµÄÄ¿µÄ²»ĞŞ¸Ä×Ö¶ÎÃû£©
+-- ä¿®æ”¹userè¡¨ä¸­ageå­—æ®µä¿¡æ¯ï¼ˆç±»å‹ï¼‰ï¼Œï¼ˆä½¿ç”¨modifyå…³é”®å­—çš„ç›®çš„ä¸ä¿®æ”¹å­—æ®µåï¼‰
 mysql> alter table user modify age tinyint unsigned not null default 20;
 Query OK, 0 rows affected (0.27 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -1028,7 +1030,7 @@ mysql> desc user;
 +---------+---------------------+------+-----+---------+----------------+
 8 rows in set (0.02 sec)
 
--- ĞŞ¸Äuser±íµÄnum×Ö¶Î¸ÄÎªmm×Ö¶Î²¢Ìí¼ÓÁËÄ¬ÈÏÖµ£¨Ê¹ÓÃchange¿ÉÒÔ¸Ä×Ö¶ÎÃû£©
+-- ä¿®æ”¹userè¡¨çš„numå­—æ®µæ”¹ä¸ºmmå­—æ®µå¹¶æ·»åŠ äº†é»˜è®¤å€¼ï¼ˆä½¿ç”¨changeå¯ä»¥æ”¹å­—æ®µåï¼‰
 mysql> alter table user change num mm int not null default 10;
 Query OK, 0 rows affected (0.25 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -1050,7 +1052,7 @@ mysql> desc user;
 
 mysql>
 
--- Îªuser±íÖĞµÄname×Ö¶ÎÌí¼ÓÎ¨Ò»ĞÔË÷Òı£¬Ë÷ÒıÃûÎªuni_name;
+-- ä¸ºuserè¡¨ä¸­çš„nameå­—æ®µæ·»åŠ å”¯ä¸€æ€§ç´¢å¼•ï¼Œç´¢å¼•åä¸ºuni_name;
 mysql> alter table user add unique uni_name(name);
 Query OK, 0 rows affected (0.27 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -1089,7 +1091,7 @@ Create Table: CREATE TABLE `user` (
 
 mysql>
 
--- Îªuser±íÖĞµÄemail×Ö¶ÎÌí¼ÓÆÕÍ¨Ë÷Òı£¬Ë÷ÒıÃûÎªindex_eamil
+-- ä¸ºuserè¡¨ä¸­çš„emailå­—æ®µæ·»åŠ æ™®é€šç´¢å¼•ï¼Œç´¢å¼•åä¸ºindex_eamil
 mysql> alter table user add index index_email(email);
 Query OK, 0 rows affected (0.31 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -1127,13 +1129,13 @@ Create Table: CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 1 row in set (0.00 sec)
 
--- ½«user±íÖĞindex_emailµÄË÷ÒıÉ¾³ı
+-- å°†userè¡¨ä¸­index_emailçš„ç´¢å¼•åˆ é™¤
 mysql> alter table user drop index index_email;
 Query OK, 0 rows affected (0.25 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
 mysql>
--- ½«user±íµÄ±íÀàĞÍ¸ÄÎªMyiSAM
+-- å°†userè¡¨çš„è¡¨ç±»å‹æ”¹ä¸ºMyiSAM
 mysql> alter table user engine="myisam";
 Query OK, 0 rows affected (0.28 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -1158,9 +1160,9 @@ Create Table: CREATE TABLE `user` (
 mysql>
 
 --============================================
-    -- Êı¾İµÄÔö¡¢¸Ä¡¢É¾³ıµÈ²Ù×÷
+    -- æ•°æ®çš„å¢ã€æ”¹ã€åˆ é™¤ç­‰æ“ä½œ
 --============================================
--- ²é¿´±í½á¹¹
+-- æŸ¥çœ‹è¡¨ç»“æ„
 mysql> desc stu;
 +---------+---------------------+------+-----+---------+----------------+
 | Field   | Type                | Null | Key | Default | Extra          |
@@ -1173,20 +1175,20 @@ mysql> desc stu;
 +---------+---------------------+------+-----+---------+----------------+
 5 rows in set (0.00 sec)
 
---±ê×¼Ìí¼Ó£¨Ö¸¶¨ËùÓĞ×Ö¶Î£¬¸ø¶¨ËùÓĞµÄÖµ£©
+--æ ‡å‡†æ·»åŠ ï¼ˆæŒ‡å®šæ‰€æœ‰å­—æ®µï¼Œç»™å®šæ‰€æœ‰çš„å€¼ï¼‰
 mysql> insert into stu(id,name,age,sex,classid) values(1,'zhangsan',20,'m','lamp93');
 Query OK, 1 row affected (0.13 sec)
 
 mysql>
---Ö¸¶¨²¿·Ö×Ö¶ÎÌí¼ÓÖµ
+--æŒ‡å®šéƒ¨åˆ†å­—æ®µæ·»åŠ å€¼
 mysql> insert into stu(name,classid) value('lisi','lamp93');
 Query OK, 1 row affected (0.11 sec)
 
--- ²»Ö¸¶¨×Ö¶ÎÌí¼ÓÖµ
+-- ä¸æŒ‡å®šå­—æ®µæ·»åŠ å€¼
 mysql> insert into stu value(null,'wangwu',21,'w','lamp93');
 Query OK, 1 row affected (0.22 sec)
 
--- ÅúÁ¿Ìí¼ÓÖµ
+-- æ‰¹é‡æ·»åŠ å€¼
 mysql> insert into stu values
     -> (null,'zhaoliu',25,'w','lamp94'),
     -> (null,'uu01',26,'m','lamp94'),
@@ -1217,13 +1219,13 @@ mysql> select * from stu;
 10 rows in set (0.00 sec)
 
 
--- ½«idÎª11µÄage¸ÄÎª35£¬sex¸ÄÎªmÖµ
+-- å°†idä¸º11çš„ageæ”¹ä¸º35ï¼Œsexæ”¹ä¸ºmå€¼
 mysql> update stu set age=35,sex='m' where id=11;
 Query OK, 1 row affected (0.16 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
 
--- ½«idÖµÎª12ºÍ14µÄÊı¾İÖµsex¸ÄÎªm£¬classid¸ÄÎªlamp92
-mysql> update stu set sex='m',classid='lamp92' where id=12 or id=14 --µÈ¼ÛÓÚÏÂÃæ
+-- å°†idå€¼ä¸º12å’Œ14çš„æ•°æ®å€¼sexæ”¹ä¸ºmï¼Œclassidæ”¹ä¸ºlamp92
+mysql> update stu set sex='m',classid='lamp92' where id=12 or id=14 --ç­‰ä»·äºä¸‹é¢
 mysql> update stu set sex='m',classid='lamp92' where id in(12,14);
 Query OK, 2 rows affected (0.09 sec)
 Rows matched: 2  Changed: 2  Warnings: 0
@@ -1253,27 +1255,27 @@ mysql> select * from stu;
 mysql>
 
 mysql>
--- É¾³ıstu±íÖĞidÖµÎª100µÄÊı¾İ
+-- åˆ é™¤stuè¡¨ä¸­idå€¼ä¸º100çš„æ•°æ®
 mysql> delete from stu where id=100;
 Query OK, 0 rows affected (0.00 sec)
 
--- É¾³ıstu±íÖĞidÖµÎª20µ½30µÄÊı¾İ
+-- åˆ é™¤stuè¡¨ä¸­idå€¼ä¸º20åˆ°30çš„æ•°æ®
 mysql> delete from stu where id>=20 and id<=30;
 Query OK, 0 rows affected (0.00 sec)
 
--- É¾³ıstu±íÖĞidÖµÎª20µ½30µÄÊı¾İ£¨µÈ¼¶ÓÚÉÏÃæĞ´·¨£©
+-- åˆ é™¤stuè¡¨ä¸­idå€¼ä¸º20åˆ°30çš„æ•°æ®ï¼ˆç­‰çº§äºä¸Šé¢å†™æ³•ï¼‰
 mysql> delete from stu where id between 20 and 30;
 Query OK, 0 rows affected (0.00 sec)
 
--- É¾³ıstu±íÖĞidÖµ´óÓÚ200µÄÊı¾İ
+-- åˆ é™¤stuè¡¨ä¸­idå€¼å¤§äº200çš„æ•°æ®
 mysql> delete from stu where id>200;
 Query OK, 0 rows affected (0.00 sec)
 
 mysql>
 
--- Êı¾İµÄ²éÑ¯
+-- æ•°æ®çš„æŸ¥è¯¢
 ============================================
--- ²éÑ¯ËùÓĞ×Ö¶ÎËùÓĞµÄÊı¾İĞÅÏ¢
+-- æŸ¥è¯¢æ‰€æœ‰å­—æ®µæ‰€æœ‰çš„æ•°æ®ä¿¡æ¯
 mysql> select * from stu;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1296,7 +1298,7 @@ mysql> select * from stu;
 +----+----------+-----+-----+---------+
 15 rows in set (0.00 sec)
 
---²éÑ¯id¡¢nameºÍclassid×Ö¶ÎµÄĞÅÏ¢
+--æŸ¥è¯¢idã€nameå’Œclassidå­—æ®µçš„ä¿¡æ¯
 mysql> select id,name,classid from stu;
 +----+----------+---------+
 | id | name     | classid |
@@ -1319,7 +1321,7 @@ mysql> select id,name,classid from stu;
 +----+----------+---------+
 15 rows in set (0.00 sec)
 
--- ²éÑ¯²¿·Ö×Ö¶ÎĞÅÏ¢£¬²¢½«name×Ö¶ÎÃû¸ÄÎªstuname£¨Ê¹ÓÃas¹Ø¼ü×Ö£©
+-- æŸ¥è¯¢éƒ¨åˆ†å­—æ®µä¿¡æ¯ï¼Œå¹¶å°†nameå­—æ®µåæ”¹ä¸ºstunameï¼ˆä½¿ç”¨aså…³é”®å­—ï¼‰
 mysql> select id,name as stuname,classid from stu;
 +----+----------+---------+
 | id | stuname  | classid |
@@ -1342,7 +1344,7 @@ mysql> select id,name as stuname,classid from stu;
 +----+----------+---------+
 15 rows in set (0.00 sec)
 
--- ²éÑ¯²¿·Ö×Ö¶ÎĞÅÏ¢£¬²¢½«name×Ö¶ÎÃû¸ÄÎªstuname£¨Ê¡ÂÔas¹Ø¼ü×Ö£©
+-- æŸ¥è¯¢éƒ¨åˆ†å­—æ®µä¿¡æ¯ï¼Œå¹¶å°†nameå­—æ®µåæ”¹ä¸ºstunameï¼ˆçœç•¥aså…³é”®å­—ï¼‰
 mysql> select id,name stuname,classid from stu;
 +----+----------+---------+
 | id | stuname  | classid |
@@ -1365,7 +1367,7 @@ mysql> select id,name stuname,classid from stu;
 +----+----------+---------+
 15 rows in set (0.02 sec)
 
---²éÑ¯²¿·Ö×Ö¶ÎĞÅÏ¢£¬²¢×·¼ÓÒ»¸ö×Ö¶ÎĞÅÏ¢£¬ÖµÎªbeijing
+--æŸ¥è¯¢éƒ¨åˆ†å­—æ®µä¿¡æ¯ï¼Œå¹¶è¿½åŠ ä¸€ä¸ªå­—æ®µä¿¡æ¯ï¼Œå€¼ä¸ºbeijing
 mysql> select id,name stuname,classid,"beijing" from stu;
 +----+----------+---------+---------+
 | id | stuname  | classid | beijing |
@@ -1388,7 +1390,7 @@ mysql> select id,name stuname,classid,"beijing" from stu;
 +----+----------+---------+---------+
 15 rows in set (0.00 sec)
 
--- Îª×·¼ÓµÄ×Ö¶Î£¬ÉèÖÃÒ»¸ö±ğÃûcity
+-- ä¸ºè¿½åŠ çš„å­—æ®µï¼Œè®¾ç½®ä¸€ä¸ªåˆ«åcity
 mysql> select id,name stuname,classid,"beijing" city from stu;
 +----+----------+---------+---------+
 | id | stuname  | classid | city    |
@@ -1412,7 +1414,7 @@ mysql> select id,name stuname,classid,"beijing" city from stu;
 15 rows in set (0.00 sec)
 
 mysql>
--- ²éÑ¯²¿·Ö×Ö¶Î£¬²¢Ìí¼ÓÒ»¸öage2×Ö¶Î£¬ÖµÎªµ±Ç°µÄage+4
+-- æŸ¥è¯¢éƒ¨åˆ†å­—æ®µï¼Œå¹¶æ·»åŠ ä¸€ä¸ªage2å­—æ®µï¼Œå€¼ä¸ºå½“å‰çš„age+4
 mysql> select id,name,age,age+4 age2 from stu;
 +----+----------+-----+------+
 | id | name     | age | age2 |
@@ -1435,7 +1437,7 @@ mysql> select id,name,age,age+4 age2 from stu;
 +----+----------+-----+------+
 15 rows in set (0.09 sec)
 
--- ²éÑ¯Ò»¸ö×Ö¶Î£¨ÓĞÖØ¸´£©
+-- æŸ¥è¯¢ä¸€ä¸ªå­—æ®µï¼ˆæœ‰é‡å¤ï¼‰
 mysql> select classid from stu;
 +---------+
 | classid |
@@ -1458,7 +1460,7 @@ mysql> select classid from stu;
 +---------+
 15 rows in set (0.00 sec)
 
--- È¥³ıÖØ¸´µÄ²éÑ¯Ò»¸ö×Ö¶ÎĞÅÏ¢
+-- å»é™¤é‡å¤çš„æŸ¥è¯¢ä¸€ä¸ªå­—æ®µä¿¡æ¯
 mysql> select distinct classid from stu;
 +---------+
 | classid |
@@ -1472,7 +1474,7 @@ mysql> select distinct classid from stu;
 mysql>
 
 
--- whereÌõ¼ş²éÑ¯
+-- whereæ¡ä»¶æŸ¥è¯¢
 ================================
 
 mysql> select * from stu where classid='lamp93';
@@ -1729,9 +1731,9 @@ mysql>
 
 
 --=====================================
---2. ·Ö×é
+--2. åˆ†ç»„
 --=====================================
--- ¶ÔĞÔ±ğ·Ö×é²é¿´
+-- å¯¹æ€§åˆ«åˆ†ç»„æŸ¥çœ‹
 mysql> select sex from stu group by sex;
 +-----+
 | sex |
@@ -1741,7 +1743,7 @@ mysql> select sex from stu group by sex;
 +-----+
 2 rows in set (0.00 sec)
 
--- ²é¿´°´°à¼¶·Ö×é
+-- æŸ¥çœ‹æŒ‰ç­çº§åˆ†ç»„
 mysql> select classid from stu group by classid;
 +---------+
 | classid |
@@ -1754,7 +1756,7 @@ mysql> select classid from stu group by classid;
 4 rows in set (0.00 sec)
 
 mysql>
--- °´ĞÔ±ğ·Ö×é²¢Í³¼ÆÈËÊı
+-- æŒ‰æ€§åˆ«åˆ†ç»„å¹¶ç»Ÿè®¡äººæ•°
 mysql> select sex,count(*) from stu group by sex;
 +-----+----------+
 | sex | count(*) |
@@ -1764,7 +1766,7 @@ mysql> select sex,count(*) from stu group by sex;
 +-----+----------+
 2 rows in set (0.00 sec)
 
--- °´°à¼¶·Ö×é²¢Í³¼ÆÈËÊı
+-- æŒ‰ç­çº§åˆ†ç»„å¹¶ç»Ÿè®¡äººæ•°
 mysql> select classid,count(*) from stu group by classid;
 +---------+----------+
 | classid | count(*) |
@@ -1776,7 +1778,7 @@ mysql> select classid,count(*) from stu group by classid;
 +---------+----------+
 4 rows in set (0.00 sec)
 
--- Í³¼Ælamp93ÆÚµÄÄĞÅ®Éú¸÷¶àÉÙÈË¡£
+-- ç»Ÿè®¡lamp93æœŸçš„ç”·å¥³ç”Ÿå„å¤šå°‘äººã€‚
 mysql> select sex,count(*) from stu where classid='lamp93' group by sex;
 +-----+----------+
 | sex | count(*) |
@@ -1787,7 +1789,7 @@ mysql> select sex,count(*) from stu where classid='lamp93' group by sex;
 2 rows in set (0.00 sec)
 
 mysql>
--- °´°à¼¶·Ö×éÍ³¼ÆÃ¿¸ö°à¼¶µÄÈËÊı£¬ÒªÇóÖ»Êä³öÈËÊıÔÚ4ÈËÒÔÉÏµÄ
+-- æŒ‰ç­çº§åˆ†ç»„ç»Ÿè®¡æ¯ä¸ªç­çº§çš„äººæ•°ï¼Œè¦æ±‚åªè¾“å‡ºäººæ•°åœ¨4äººä»¥ä¸Šçš„
 mysql> select classid,count(*) from stu group by classid having count(*)>4;
 +---------+----------+
 | classid | count(*) |
@@ -1796,7 +1798,7 @@ mysql> select classid,count(*) from stu group by classid having count(*)>4;
 | lamp94  |        5 |
 +---------+----------+
 2 rows in set (0.00 sec)
--- °´°à¼¶·Ö×éÍ³¼ÆÃ¿¸ö°à¼¶µÄÈËÊı£¬ÒªÇóÖ»Êä³öÈËÊıÔÚ4ÈËÒÔÉÏµÄ£¨ÈËÊıÊ¹ÓÃnum±ğÃû£©
+-- æŒ‰ç­çº§åˆ†ç»„ç»Ÿè®¡æ¯ä¸ªç­çº§çš„äººæ•°ï¼Œè¦æ±‚åªè¾“å‡ºäººæ•°åœ¨4äººä»¥ä¸Šçš„ï¼ˆäººæ•°ä½¿ç”¨numåˆ«åï¼‰
 mysql> select classid,count(*) num from stu group by classid having num>4;
 +---------+-----+
 | classid | num |
@@ -1809,9 +1811,9 @@ mysql> select classid,count(*) num from stu group by classid having num>4;
 mysql>
 
 --============================
---=== ÅÅĞò ===
+--=== æ’åº ===
 --============================
--- °´ÄêÁäÉıĞòÅÅĞò£¨Ä¬ÈÏasc£©
+-- æŒ‰å¹´é¾„å‡åºæ’åºï¼ˆé»˜è®¤ascï¼‰
 mysql> select * from stu order by age;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1834,7 +1836,7 @@ mysql> select * from stu order by age;
 +----+----------+-----+-----+---------+
 15 rows in set (0.01 sec)
 
--- °´ÄêÁä×ö½µĞòÅÅĞò
+-- æŒ‰å¹´é¾„åšé™åºæ’åº
 mysql> select * from stu order by age desc;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1857,7 +1859,7 @@ mysql> select * from stu order by age desc;
 +----+----------+-----+-----+---------+
 15 rows in set (0.00 sec)
 
--- °´ÄêÁäÉıĞòÅÅĞò
+-- æŒ‰å¹´é¾„å‡åºæ’åº
 mysql> select * from stu order by age asc;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1880,7 +1882,7 @@ mysql> select * from stu order by age asc;
 +----+----------+-----+-----+---------+
 15 rows in set (0.00 sec)
 
--- °´ĞÔ±ğÉıĞòÅÅĞò
+-- æŒ‰æ€§åˆ«å‡åºæ’åº
 mysql> select * from stu order by sex;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1903,7 +1905,7 @@ mysql> select * from stu order by sex;
 +----+----------+-----+-----+---------+
 15 rows in set (0.00 sec)
 
---¶àÁĞÅÅĞò£º°´ĞÔ±ğÅÅĞòÉıĞòÅÅĞò£¬ÏàÍ¬°´ÄêÁäÉıĞòÅÅĞò
+--å¤šåˆ—æ’åºï¼šæŒ‰æ€§åˆ«æ’åºå‡åºæ’åºï¼Œç›¸åŒæŒ‰å¹´é¾„å‡åºæ’åº
 mysql> select * from stu order by sex,age;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1926,7 +1928,7 @@ mysql> select * from stu order by sex,age;
 +----+----------+-----+-----+---------+
 15 rows in set (0.00 sec)
 
--- °´°à¼¶½µĞòÅÅĞò£¬ÏàÍ¬µÄ°à¼¶°´ÄêÁäÉıĞòÅÅ
+-- æŒ‰ç­çº§é™åºæ’åºï¼Œç›¸åŒçš„ç­çº§æŒ‰å¹´é¾„å‡åºæ’
 mysql> select * from stu order by classid desc,age asc;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1952,7 +1954,7 @@ mysql> select * from stu order by classid desc,age asc;
 mysql>
 
 
--- ·ÖÒ³limit×Ó¾ä
+-- åˆ†é¡µlimitå­å¥
 --===============================================
 mysql> select * from stu;
 +----+----------+-----+-----+---------+
@@ -1976,7 +1978,7 @@ mysql> select * from stu;
 +----+----------+-----+-----+---------+
 15 rows in set (0.00 sec)
 
--- ÌáÈ¡Ç°5ÌõĞÅÏ¢
+-- æå–å‰5æ¡ä¿¡æ¯
 mysql> select * from stu limit 5;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -1989,7 +1991,7 @@ mysql> select * from stu limit 5;
 +----+----------+-----+-----+---------+
 5 rows in set (0.00 sec)
 
--- ÌáÈ¡Ç°3ÌõĞÅÏ¢
+-- æå–å‰3æ¡ä¿¡æ¯
 mysql> select * from stu limit 3;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -2000,7 +2002,7 @@ mysql> select * from stu limit 3;
 +----+----------+-----+-----+---------+
 3 rows in set (0.00 sec)
 
--- ÌáÈ¡Ç°5ÌõĞÅÏ¢
+-- æå–å‰5æ¡ä¿¡æ¯
 mysql> select * from stu limit 0,5;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -2013,7 +2015,7 @@ mysql> select * from stu limit 0,5;
 +----+----------+-----+-----+---------+
 5 rows in set (0.00 sec)
 
--- ÅÅ³ıÇ°5Ìõ£¬ÌáÈ¡ºó5ÌõĞÅÏ¢
+-- æ’é™¤å‰5æ¡ï¼Œæå–å5æ¡ä¿¡æ¯
 mysql> select * from stu limit 5,5;
 +----+------+-----+-----+---------+
 | id | name | age | sex | classid |
@@ -2026,7 +2028,7 @@ mysql> select * from stu limit 5,5;
 +----+------+-----+-----+---------+
 5 rows in set (0.00 sec)
 
--- ÅÅ³ıÇ°10Ìõ£¬ÌáÈ¡ºó5ÌõĞÅÏ¢
+-- æ’é™¤å‰10æ¡ï¼Œæå–å5æ¡ä¿¡æ¯
 mysql> select * from stu limit 10,5;
 +----+------+-----+-----+---------+
 | id | name | age | sex | classid |
@@ -2070,7 +2072,7 @@ mysql> select * from stu where id<10 order by id desc limit 1;
 
 
 
--- Ëæ»úÊı
+-- éšæœºæ•°
 
 mysql> select rand();
 +---------------------+
@@ -2313,14 +2315,14 @@ mysql> select * from stu where age=(select max(age) from stu);
 
 
 ===============================================================
--- ¶à±í²éÑ¯
+-- å¤šè¡¨æŸ¥è¯¢
 
--- ¶à±í²éÑ¯£º
---  1. where¹ØÁª²é
---  2. ¶à±íÇ¶Ì×²é
---  3. Join Á¬½Ó²é£º ×óÁª left join  ÓÒÁª right join  ÄÚÁª inner join
+-- å¤šè¡¨æŸ¥è¯¢ï¼š
+--  1. whereå…³è”æŸ¥
+--  2. å¤šè¡¨åµŒå¥—æŸ¥
+--  3. Join è¿æ¥æŸ¥ï¼š å·¦è” left join  å³è” right join  å†…è” inner join
 --=========================================================================
--- Ñ§ÉúĞÅÏ¢±í
+-- å­¦ç”Ÿä¿¡æ¯è¡¨
 mysql> select * from stu;
 +----+----------+-----+-----+---------+
 | id | name     | age | sex | classid |
@@ -2341,7 +2343,7 @@ mysql> select * from stu;
 +----+----------+-----+-----+---------+
 13 rows in set (0.00 sec)
 
--- Ñ§Éú¿¼ÊÔ³É¼¨±í
+-- å­¦ç”Ÿè€ƒè¯•æˆç»©è¡¨
 mysql> select * from grade;
 +----+------+------+-------+
 | id | sid  | php  | mysql |
@@ -2359,7 +2361,7 @@ mysql> select * from grade;
 9 rows in set (0.00 sec)
 
 mysql>
--- ²éÑ¯stuÑ§ÉúºÍ³É¼¨grade±íĞÅÏ¢£¬ÏÔÊ¾ËùÓĞ×Ö¶Î
+-- æŸ¥è¯¢stuå­¦ç”Ÿå’Œæˆç»©gradeè¡¨ä¿¡æ¯ï¼Œæ˜¾ç¤ºæ‰€æœ‰å­—æ®µ
 mysql> select * from stu,grade where stu.id = grade.sid;
 +----+----------+-----+-----+---------+----+------+------+-------+
 | id | name     | age | sex | classid | id | sid  | php  | mysql |
@@ -2375,7 +2377,7 @@ mysql> select * from stu,grade where stu.id = grade.sid;
 +----+----------+-----+-----+---------+----+------+------+-------+
 8 rows in set (0.06 sec)
 
--- ²éÑ¯Ñ§ÉúºÍ³É¼¨±íµÄ¹ØÁªĞÅÏ¢£¬Ö»ÏÔÊ¾²¿·Ö×Ö¶Î¡£
+-- æŸ¥è¯¢å­¦ç”Ÿå’Œæˆç»©è¡¨çš„å…³è”ä¿¡æ¯ï¼Œåªæ˜¾ç¤ºéƒ¨åˆ†å­—æ®µã€‚
 mysql> select stu.id,name,classid,php,mysql from stu,grade where stu.id=grade.si
 d;
 +----+----------+---------+------+-------+
@@ -2391,7 +2393,7 @@ d;
 | 11 | sad      | lamp94  |   65 |    78 |
 +----+----------+---------+------+-------+
 8 rows in set (0.02 sec)
--- Îª±íÆğ¸ö±ğÃû
+-- ä¸ºè¡¨èµ·ä¸ªåˆ«å
 mysql> select s.id,s.name,s.classid,g.php,g.mysql from stu s,grade g where s.id=
 g.sid;
 +----+----------+---------+------+-------+
@@ -2409,7 +2411,7 @@ g.sid;
 8 rows in set (0.00 sec)
 
 mysql>
--- ²éÑ¯Ñ§ÉúºÍ³É¼¨±íĞÅÏ¢£¬¸½¼ÓÌõ¼şÑ§ÉúÎªlamp93ÆÚµÄ
+-- æŸ¥è¯¢å­¦ç”Ÿå’Œæˆç»©è¡¨ä¿¡æ¯ï¼Œé™„åŠ æ¡ä»¶å­¦ç”Ÿä¸ºlamp93æœŸçš„
 mysql> select s.id,s.name,s.classid,g.php,g.mysql from stu s,grade g
     -> where s.id = g.sid and s.classid='lamp93';
 +----+----------+---------+------+-------+
@@ -2422,7 +2424,7 @@ mysql> select s.id,s.name,s.classid,g.php,g.mysql from stu s,grade g
 +----+----------+---------+------+-------+
 4 rows in set (0.05 sec)
 
---Ê¹ÓÃÇ¶Ì×²éphp³É¼¨×î¸ßµÄÑ§ÉúĞÅÏ¢¡£
+--ä½¿ç”¨åµŒå¥—æŸ¥phpæˆç»©æœ€é«˜çš„å­¦ç”Ÿä¿¡æ¯ã€‚
 mysql> select * from stu where id in(select sid from grade where php=(select max
 (php) from grade));
 +----+----------+-----+-----+---------+
@@ -2449,7 +2451,7 @@ mysql> select s.id,s.name,g.php,g.mysql from stu s,grade g where s.id=g.sid;
 +----+----------+------+-------+
 8 rows in set (0.00 sec)
 
--- ÒÔ×óÁª·½Ê½²éÑ¯Ñ§ÉúºÍ³É¼¨ĞÅÏ¢£¬£¨×óÁªÊÇÒÔÑ§ÉúÎªÖ÷£¬Ã»ÓĞµÄ³É¼¨²¹null£©
+-- ä»¥å·¦è”æ–¹å¼æŸ¥è¯¢å­¦ç”Ÿå’Œæˆç»©ä¿¡æ¯ï¼Œï¼ˆå·¦è”æ˜¯ä»¥å­¦ç”Ÿä¸ºä¸»ï¼Œæ²¡æœ‰çš„æˆç»©è¡¥nullï¼‰
 mysql> select s.id,s.name,g.php,g.mysql from stu s left join grade g
     -> on s.id=g.sid;
 +----+----------+------+-------+
@@ -2471,7 +2473,7 @@ mysql> select s.id,s.name,g.php,g.mysql from stu s left join grade g
 +----+----------+------+-------+
 13 rows in set (0.00 sec)
 
--- ÒÔ×óÁª·½Ê½²éÑ¯Ñ§ÉúºÍ³É¼¨ĞÅÏ¢£¬£¨×óÁªÊÇÒÔ³É¼¨ÎªÖ÷£¬Ã»ÓĞµÄÑ§Éú²¹null£©
+-- ä»¥å·¦è”æ–¹å¼æŸ¥è¯¢å­¦ç”Ÿå’Œæˆç»©ä¿¡æ¯ï¼Œï¼ˆå·¦è”æ˜¯ä»¥æˆç»©ä¸ºä¸»ï¼Œæ²¡æœ‰çš„å­¦ç”Ÿè¡¥nullï¼‰
 mysql> select s.id,s.name,g.php,g.mysql from grade g left join stu s
     -> on s.id=g.sid;
 +------+----------+------+-------+
@@ -2491,7 +2493,7 @@ mysql> select s.id,s.name,g.php,g.mysql from grade g left join stu s
 
 mysql>
 
---²éÑ¯lamp93ÆÚÑ§Éú¿¼ÊÔĞÅÏ¢
+--æŸ¥è¯¢lamp93æœŸå­¦ç”Ÿè€ƒè¯•ä¿¡æ¯
 mysql> select s.id,s.name,s.classid,g.php,g.mysql from stu s left join grade g
     -> on s.id=g.sid where s.classid='lamp93';
 +----+----------+---------+------+-------+
@@ -2525,7 +2527,7 @@ mysql> select s.id,s.name,s.classid,g.php,g.mysql from stu s left join grade g
 mysql>
 
 
---²éÑ¯±íÖĞstudent_idºÍkind_idÁ½¸ö×Ö¶Î¶¼ÏàÍ¬µÄÊı¾İÓĞÄÄĞ©
+--æŸ¥è¯¢è¡¨ä¸­student_idå’Œkind_idä¸¤ä¸ªå­—æ®µéƒ½ç›¸åŒçš„æ•°æ®æœ‰å“ªäº›
 select * from (select count(*) num,student_id,kind_id from student_speciality_item a group by a.student_id,a.kind_id) t where t.num>1
 
 
