@@ -87,4 +87,14 @@ public/media
 
 http://localhost/admin/index.html#/login
 
+安装php服务器依赖
+Composer require server
+
+
+Windows子系统npm同步
+public/admin/webpack.config.js
+module.exports={
+    +watchOption{poll:true}
+}
+
 安装过程只在Mac下进行了测试，估计Linux下也没什么问题，有问题欢迎抛砖，Windows由于最近很少用了，有时间再写对应的安装过程
