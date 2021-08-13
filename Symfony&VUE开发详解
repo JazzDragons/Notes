@@ -89,7 +89,7 @@ http://localhost/admin/index.html#/login
 
 安装php服务器依赖
 Composer require server
-
+php bin/console server:start
 
 Windows子系统npm同步
 public/admin/webpack.config.js
